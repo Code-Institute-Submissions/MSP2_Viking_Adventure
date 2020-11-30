@@ -19,9 +19,13 @@ body {
 /* view and dialogue */
 
 .dialogue-box {
-    position: absolute;
+    position: fixed;
     top: 10%;
-    width: 80vw;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    max-width: 90%;
+    min-width: 90%;
     margin: auto;
     background-color: #333333;
     padding: 10px;
@@ -29,9 +33,18 @@ body {
     z-index: 1;
 }
 
-.image-screen {
-    width: 60%;
+.dialogue-box.parent {
+  position: relative;
+}
+
+.row .image-screen {
+    background-size: contain;
+    width: 100%;
     z-index: -1;
+}
+
+img {
+    width:100%; 
 }
 
 /* Choices and Inventory */
@@ -65,5 +78,3 @@ body {
     background-color: #8a1d31;
     color: white;
 }
-
-

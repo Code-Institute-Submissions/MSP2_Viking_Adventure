@@ -19,24 +19,27 @@ body {
 /* view and dialogue */
 
 .dialogue-box {
-    width: 900px;
-    max-width: 90%;
+    position: absolute;
+    top: 10%;
+    width: 80vw;
+    margin: auto;
     background-color: #333333;
     padding: 10px;
     border-radius: 5px;
+    z-index: 1;
 }
 
 .image-screen {
-    max-width: 60%;
+    width: 60%;
+    z-index: -1;
 }
 
 /* Choices and Inventory */
 
 .choice-container {
-    position: absolute;
-    bottom: 0;
-    width: 900px;
-    max-width: 90%;
+    z-index: 1;
+    max-width: 100%;
+    min-width: 100%;
     background-color: #333333;
     padding: 10px;
     border-radius: 5px;

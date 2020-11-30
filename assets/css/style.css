@@ -1,0 +1,66 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: "VT323", 'Courier New', Courier, monospace;
+    font-size: 120%;
+    color: white;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #1a1919;
+}
+
+/* view and dialogue */
+
+.dialogue-box {
+    width: 900px;
+    max-width: 90%;
+    background-color: #333333;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.image-screen {
+    max-width: 60%;
+}
+
+/* Choices and Inventory */
+
+.choice-container {
+    position: absolute;
+    bottom: 0;
+    width: 900px;
+    max-width: 90%;
+    background-color: #333333;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn {
+    background-color: #5c1622;
+    border: #3d0d16;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: white;
+    outline: none;
+}
+
+.btn:hover {
+    background-color: #8a1d31;
+    color: white;
+}
+
+

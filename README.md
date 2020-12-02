@@ -81,18 +81,37 @@ As a returning player, I want to:
 https://fonts.google.com/specimen/VT323?preview.text=Talk%20Use%20Inventory&preview.text_type=custom&sidebar.open=true&selection.family=VT323
 
 ### Artwork
+All artwork has been created by project developer, Robert Clark, with inspiration gathered from old Point and Click adventure titles akin to those of the Monkey Island series.
 
 ### Wireframes
 
 ### Mockups
+
+### Options Tree
+As this game uses a branching narrative to offer players multiple options, a expansive tree of options had to be created to ensure each avenue was correctly coded. The tree can be seen in its entirety here:
+INSERT TREE
+
 
 
 # Features
 
 ## Existing Features
 
+### Home Page
+Here users are greeted with an animated homepage with the game name and links to the game and a help page. 
+The artistic style mimics that of the game to ensure users understand the theme before the game has begun.
+
+### Help Page
+Here users are given a brief synopsis of the game's story, with an understanding of what situation their protagonist is in, and what is required of them to complete the game.
+
+### Game Page
+Here is the meat of the project. Users are introduced to the game before they are let loose to try and reach the game completion. 
+Through the interactive buttons provided at the bottom of the page, users must use their inventory and conversational options to win the affection of each member of the High Council.
+
 ## Future features to implement
 
+### Further interactivity
+As this game uses gif-based images to present a living world, a future update will overhaul this by presenting layered content that users can navigate the character of Ivor through, interacting with things he sees both in and outside the camp.
 
 # Technologies Used
 

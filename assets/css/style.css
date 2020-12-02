@@ -16,6 +16,37 @@ body {
     background-color: #1a1919;
 }
 
+.start-help-buttons{
+    position: relative;
+    bottom: 100px;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+}
+
+a {
+    background-color: #5c1622;
+    border: #3d0d16;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    outline: none;
+    font-size: 100%;
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: #8a1d31;
+    color: white;
+    font-size: 100%;
+    text-decoration: none;
+    transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out; 
+    -moz-transition: all 0.30s ease-in-out;
+    -webkit-transition: all 0.30s ease-in-out;
+}
+
+
 /* view and dialogue */
 
 .row .dialogue-box {
@@ -76,4 +107,8 @@ img {
 .btn:hover {
     background-color: #8a1d31;
     color: white;
+    transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out; 
+    -moz-transition: all 0.30s ease-in-out;
+    -webkit-transition: all 0.30s ease-in-out;
 }

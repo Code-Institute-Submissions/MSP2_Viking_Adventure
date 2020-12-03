@@ -157,6 +157,12 @@ There was an issue regarding the in-game modals not appearing when requested.
 ```
 Despite best efforts to retrieve a solution online, it was the Code Institute tutors who provided the solution. A missing piece of jQuery code had been excluded from the game.html file, which once added made the first modal work fine.
 
+### buttons
+During the development of the modal, an issue arose in which the player choice buttons on the game.html page stopped displaying the various IDs shown in game.js.
+As this occured immediately after the implementation of the modal and the inclusion of the jQuery file, it is here that I suspect the issue lies.
+However, with every attempt to fix made, the layout is distorted wildly, and when the modal and jQuery aspects are removed, it does not restore functionality to the buttons.
+
+After many attempted fixes, it turns out it wasn't a problem caused by the modal, but caused from adding in setState, requiredState and currentState elements to the game.js. Further work will be required on this to ensure it can still function as required.
 
 ## Performance
 

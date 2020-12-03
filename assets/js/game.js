@@ -135,7 +135,7 @@ const hintTexts = [
             },
             {
                 text: "The Settlement",
-                nextText: 100,
+                nextText: 115,
             },
             {
                 text: "The War",
@@ -244,17 +244,14 @@ const hintTexts = [
         options: [
             {
                 text: "Sword",
-                setState: { hasSword: true },
                 nextText: 9,
             },
             {
                 text: "Axe",
-                setState: { hasAxe: true },
                 nextText: 10,
             },
             {
                 text: "Gold",
-                setState: { hasGold: true },
                 nextText: 11,
             },
             {
@@ -269,17 +266,14 @@ const hintTexts = [
         options: [
             {
                 text: "Paint",
-                setState: { hasPaint: true },
                 nextText: 13,
             },
             {
                 text: "Shield",
-                setState: { hasShield: true },
                 nextText: 14,
             },
             {
                 text: "Snacks",
-                setState: { hasSnacks: true },
                 nextText: 15,
             },
             {
@@ -541,7 +535,6 @@ const hintTexts = [
             {
                 text: "Shield",
                 nextText: 88,
-                setState: {PaintedShield = true},
             },
             {
                 text: "Snacks",
@@ -608,7 +601,6 @@ const hintTexts = [
             {
                 text: "Paint",
                 nextText: 88,
-                setState: {PaintedShield = true},
             },
             {
                 text: "Snacks",
@@ -765,7 +757,6 @@ const hintTexts = [
         options: [
             {
                 text: "Bjorn",
-                requiredState: (currentState) => currentState.BjornNeutral,
                 nextText: 23,
             },
             {
@@ -815,9 +806,7 @@ const hintTexts = [
             },
             {
                 text: "Painted Shield",
-                requiredState: (currentState) => currentState.PaintedShield,
                 nextText: 33,
-                setState: {BjornPleased: true, BjornNeutral: false},
             },
             {
                 text: "Shield",
@@ -832,7 +821,6 @@ const hintTexts = [
                 nextText: 1,
             }
         ]   
-        }
     },
 
     // ----------------------------------------- Astrid Riddle Functions
@@ -896,7 +884,6 @@ const hintTexts = [
             {
                 text: "Answer 2",
                 nextText: 45,
-                setState: {AstridPleased = true},
             },
             {
                 text: "Answer 3",
@@ -914,12 +901,6 @@ const hintTexts = [
     
 // ------------------------------------------------------ Look at Functions
 
-    {
-        id: 5,
-        text: "Look at",
-        options: [
-        ]
-    },
     
 ]
 

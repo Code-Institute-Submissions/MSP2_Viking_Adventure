@@ -120,6 +120,28 @@ const hintTexts = [
                 nextText: 18,
             },
             {
+                text: "More",
+                nextText: 98,
+            },
+        ]
+    },
+    {
+        id: 98,
+        text: "Talk to Bjorn about:",
+        options: [
+            {
+                text: "The Council",
+                nextText: 99,
+            },
+            {
+                text: "The Settlement",
+                nextText: 100,
+            },
+            {
+                text: "The War",
+                nextText: 101,
+            },
+            {
                 text: "Back",
                 nextText: 2,
             },
@@ -148,6 +170,28 @@ const hintTexts = [
         ]
     },
     {
+        id: 102,
+        text: "Talk to Astrid about:",
+        options: [
+            {
+                text: "The Council",
+                nextText: 103,
+            },
+            {
+                text: "The Settlement",
+                nextText: 104,
+            },
+            {
+                text: "The War",
+                nextText: 105,
+            },
+            {
+                text: "Back",
+                nextText: 2,
+            },
+        ]
+    },
+    {
         id: 8,
         text: "Talk to Sigurd about:",
         options: [
@@ -161,6 +205,28 @@ const hintTexts = [
             },
             {
                 text: "Sigurd",
+                nextText: 22,
+            },
+            {
+                text: "More",
+                nextText: 106,
+            },
+        ]
+    },
+    {
+        id: 106,
+        text: "Talk to Sigurd about:",
+        options: [
+            {
+                text: "The Council",
+                nextText: 22,
+            },
+            {
+                text: "The Settlement",
+                nextText: 22,
+            },
+            {
+                text: "The War",
                 nextText: 22,
             },
             {
@@ -224,6 +290,7 @@ const hintTexts = [
     },
     
  // --------------------------- Use With Functions    
+   
     {
         id: 9,
         text: "Use Sword with",
@@ -330,7 +397,7 @@ const hintTexts = [
             },
             {
                 text: "More",
-                nextText: 100,
+                nextText: 97,
             },
          ]
     },
@@ -474,6 +541,7 @@ const hintTexts = [
             {
                 text: "Shield",
                 nextText: 88,
+                setState: {PaintedShield = true},
             },
             {
                 text: "Snacks",
@@ -540,6 +608,7 @@ const hintTexts = [
             {
                 text: "Paint",
                 nextText: 88,
+                setState: {PaintedShield = true},
             },
             {
                 text: "Snacks",
@@ -621,6 +690,72 @@ const hintTexts = [
             },
          ]
     },
+    {
+        id: 107,
+        text: "Use Painted Sheild with",
+        options: [
+            {
+                text: "Bjorn",
+                nextText: 33,
+            },
+            {
+                text: "Astrid",
+                nextText: 85,
+            },
+            {
+                text: "Sigurd",
+                nextText: 85,
+            },
+            {
+                text: "More",
+                nextText: 109,
+            },
+         ]
+    },
+    {
+        id: 109,
+        text: "Use Painted Sheild with",
+         options: [
+            {
+                text: "Sword",
+                nextText: 75,
+            },
+            {
+                text: "Axe",
+                nextText: 75,
+            },
+            {
+                text: "Gold",
+                nextText: 75,
+            },
+            {
+                text: "More",
+                nextText: 110,
+            },
+         ]
+    },
+    {
+        id: 96,
+        text: "Use Painted Sheild with",
+         options: [
+            {
+                text: "Paint",
+                nextText: 111,
+            },
+            {
+                text: "Snacks",
+                nextText: 75,
+            },
+            {
+                text: "Self",
+                nextText: 75,
+            },
+            {
+                text: "Back",
+                nextText: 3,
+            },
+         ]
+    },
 
 // ------------------------------------------------------ Challenge Functions
 
@@ -630,6 +765,7 @@ const hintTexts = [
         options: [
             {
                 text: "Bjorn",
+                requiredState: (currentState) => currentState.BjornNeutral,
                 nextText: 23,
             },
             {
@@ -669,13 +805,19 @@ const hintTexts = [
             }
         ]
     },
-     {
+    {
         id: 29,
-        text: "Give Bjorn:",
+        text: "Give Bjorn:",         
         options: [
             {
                 text: "Paint",
                 nextText: 30,
+            },
+            {
+                text: "Painted Shield",
+                requiredState: (currentState) => currentState.PaintedShield,
+                nextText: 33,
+                setState: {BjornPleased: true, BjornNeutral: false},
             },
             {
                 text: "Shield",
@@ -689,11 +831,83 @@ const hintTexts = [
                 text: "Back",
                 nextText: 1,
             }
-        ]
+        ]   
+        }
     },
 
     // ----------------------------------------- Astrid Riddle Functions
-
+    
+    // 24 is astrid dialogue and leads onto 34
+    {
+        id: 34,
+        text: "What is your answer?",
+        options: [
+            {
+                text: "Answer 1",
+                nextText: 35,
+            },
+            {
+                text: "Answer 2",
+                nextText: 35,
+            },
+            {
+                text: "Answer 3",
+                nextText: 36,
+            },
+            {
+                text: "Give Up",
+                nextText: 2,
+            }
+        ]
+    },
+    // 35 is fail question
+    // 36 is correct answer and move onto next dialogue, then 39
+     {
+        id: 39,
+        text: "What is your answer?",
+        options: [
+            {
+                text: "Answer 1",
+                nextText: 40,
+            },
+            {
+                text: "Answer 2",
+                nextText: 35,
+            },
+            {
+                text: "Answer 3",
+                nextText: 35,
+            },
+            {
+                text: "Give Up",
+                nextText: 2,
+            }
+        ]
+    },
+    //40 is correct answer and move onto next dialogue, then 43
+     {
+        id: 43,
+        text: "What is your answer?",
+        options: [
+            {
+                text: "Answer 1",
+                nextText: 35,
+            },
+            {
+                text: "Answer 2",
+                nextText: 45,
+                setState: {AstridPleased = true},
+            },
+            {
+                text: "Answer 3",
+                nextText: 35,
+            },
+            {
+                text: "Give Up",
+                nextText: 2,
+            }
+        ]
+    },
 
     // ----------------------------------------- Sigurd Weapon Functions
 

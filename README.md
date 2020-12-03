@@ -127,6 +127,37 @@ https://gifmaker.me
 
 ## Bug fixes
 
+### In-Game Modals
+There was an issue regarding the in-game modals not appearing when requested. 
+
+```
+<nav class="navbar">
+            <div>
+                <ul class="nav nav-fill">
+                    <button type="button" data-toggle="modal" data-target="#warningModal" class="btn btn-primary">Main Menu</button>
+                    <button type="button" data-toggle="modal" data-target="#helpModal" class="btn btn-primary">Help</button>
+                </ul>
+            </div>
+        </nav>
+        <div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="warningModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="warningModalLabel">Are you sure?</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>If you leave the game, you will lose your current progress.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Continue Game</button>
+                        <button type="link" class="btn btn-primary" onclick="window.location.href='index.html'">Return to Main Menu</button>
+                    </div>
+                </div>
+            </div>
+```
+Despite best efforts to retrieve a solution online, it was the Code Institute tutors who provided the solution. A missing piece of jQuery code had been excluded from the game.html file, which once added made the first modal work fine.
+
+
 ## Performance
 
 ## Validator Test

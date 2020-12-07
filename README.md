@@ -164,6 +164,23 @@ However, with every attempt to fix made, the layout is distorted wildly, and whe
 
 After many attempted fixes, it turns out it wasn't a problem caused by the modal, but caused from adding in setState, requiredState and currentState elements to the game.js. Further work will be required on this to ensure it can still function as required.
 
+### Game.html code error
+During coding, a row div was rendered unneccessary, and blocked out while further testing was required. 
+However, once the decision to delete it was made, it began to throw up an issue wherein the dialogue and 
+choice buttons started being distorted out of shape. The code causing this can be seen below.
+
+```
+<!--<div class="row dialogue-box">
+            <div class="col" id="dialogue">
+                Dialogue
+            </div>
+        </div> --> 
+```
+
+Even though it was blocked out, it was still causing a bug when deleted. 
+To fix it, the code was rewritten without being blocked out, then the blocked out code was deleted at the same time.
+This appeared to revert the structure, so that once the new code was then deleted, it functioned as intended.
+
 ## Performance
 
 ## Validator Test

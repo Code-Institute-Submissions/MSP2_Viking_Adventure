@@ -41,6 +41,13 @@ function selectOption(option) {
   showTextNode(nextTextNodeId)
 }
 
+function showDialogue() {
+    if (textNode.dialogue === "") {
+        dialogue-box.display; "none";
+    } else {
+        dialogue-box.display; "block";
+    }
+}
 
 
 // ------------------------------------------------------ Button Options
@@ -1317,7 +1324,7 @@ const textNodes = [
      {
         id: 43,
         text: "What is your answer?",
-        dialogue: "Astrid: Final riddle... Alone I battle, wounded by steel, weary of war. All I see is savage fighting. No assistance will come for my cursed self. Struck by both friend and foe brings resolve for all but me, whose wounds grow ever wider. I demise amidst men, yet the herbs that aid those shalt never cure me. What am I?",
+        dialogue: "Astrid: Alone I battle, wounded by steel, weary of war. All I see is savage fighting. No assistance will come for my cursed self. Struck by both friend and foe brings resolve for all but me, whose wounds grow ever wider. I demise amidst men, yet the herbs that aid those shalt never cure me. What am I?",
         options: [
             {
                 text: "A Soldier",

@@ -5,8 +5,13 @@ const dialogueTextElement = document.getElementById('dialogue')
 let state = {}
 
 function startGame() {
-    state = {}
-    show = showTextNode(1)
+    state = {BjornPleased: false, SigurdPleased: false, AstridPleased: false, hasPaintedShield: false}
+    show = showTextNode(0)
+}
+
+function GameComplete() {
+    requiredstate = {BjornPleased: true, SigurdPleased: true, AstridPleased: true,}
+    show = showTextNode(300)
 }
 
 function showTextNode(textNodeIndex) {
@@ -49,7 +54,8 @@ function showDialogue() {
     }
 }
 
-// Add the states BjornPleased = false etc to the state function at the beginning of the game
+// function PaintedShield() {  if (textNodeId === 88)   set (hasPaintedShield: true)   }
+
 // Add jQuery to fix the DOM stuff
 // Add if else statements to get the states right.
 // Can have a chat with mentor again if needed to get the js stuff right.
@@ -57,6 +63,17 @@ function showDialogue() {
 // ------------------------------------------------------ Button Options
 
 const textNodes = [
+    {
+        id: 0,
+        text: "You stand among the Jarl and his High Council.",
+        dialogue: "Jarl Bjorn: You boy, I have not seen you here before. What do you want?",
+        options: [
+            {
+                text: "Ask to live in their settlement.",
+                nextText: 1,
+            },
+        ]
+    },
     {
         id: 1,
         text: "What will you do?",
@@ -855,7 +872,7 @@ const textNodes = [
         id: 88,
         text: "",
         dialogue: "Ivar: It looks much better now. I should have done that ages ago.",
-        // setState: { hasPaintedShield = true },
+        setState: { hasPaintedShield: true },
         options: [
             {
                 text: "Continue",
@@ -1154,15 +1171,15 @@ const textNodes = [
         options: [
             {
                 text: "Sword",
-                nextText: 26,
+                nextText: 117,
             },
             {
                 text: "Axe",
-                nextText: 27,
+                nextText: 117,
             },
             {
                 text: "Gold",
-                nextText: 28,
+                nextText: 117,
             },
             {
                 text: "More",
@@ -1177,7 +1194,7 @@ const textNodes = [
         options: [
             {
                 text: "Paint",
-                nextText: 30,
+                nextText: 117,
             },
             {
                 text: "Painted Shield",
@@ -1185,11 +1202,11 @@ const textNodes = [
             },
             {
                 text: "Shield",
-                nextText: 31,
+                nextText: 117,
             },
             {
                 text: "Snacks",
-                nextText: 32,
+                nextText: 117,
             },
             {
                 text: "Back",
@@ -1198,10 +1215,21 @@ const textNodes = [
         ]   
     },
     {
+        id: 117,
+        text: "",
+        dialogue: "Bjorn: Is that the best you can do? I’ve seen deer droppings I’d rather own! Come back when you have something of worth to give me.",
+        options: [
+            {
+                text: "Back",
+                nextText: 23,
+            },
+         ]
+    },
+    {
         id: 118,
         text: "Bjorn accepts the Painted Shield.",
         dialogue: "Bjorn: ODIN’S BEARD! Now that is a gift. It will look splendid with the rest of my collection. Well done, boy. You have earned my blessing.",
-        // setState: { BjornPleased = true },
+        setState: { BjornPleased: true },
         options: [
             {
                 text: "Continue",
@@ -1353,7 +1381,7 @@ const textNodes = [
         id: 45,
         dialogue: "Astrid: Bravo! You have exceeded my expectations. Very well, traveller, you have my approval.",
         text: "The wise queen is pleased. Well done.",
-        // setState: { AstridPleased = true },
+        setState: { AstridPleased: true },
         options: [
             {
                 text: "Continue",
@@ -1425,7 +1453,7 @@ const textNodes = [
         id: 119,
         dialogue: "Narrator: Hungry from battle, Sigurd devours the snack without reading the label, and succumbs to anaphylactic shock. As he sits there dying, he nods at Ivar for being the one man to best him.",
         text: "Well that's one way to beat an unbeatable drengr.",
-        // setState: { SigurdPleased = true },
+        setState: { SigurdPleased: true },
         options: [
             {
                 text: "Continue",
@@ -1672,7 +1700,6 @@ const textNodes = [
 
     {
         id: 300,
-        // requiredState: (currentState) => currentState.BjornPleased,AstridPleased,SigurdPleased,
         text: "Would you like to play again?",
         dialogue: "Bjorn: Congratulations, boy. It seems you’ve won the favour of the High Council. You and your family may live here so long as you desire.",
         options: [

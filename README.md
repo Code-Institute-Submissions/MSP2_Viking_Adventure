@@ -222,7 +222,16 @@ During the development of the modal, an issue arose in which the player choice b
 As this occured immediately after the implementation of the modal and the inclusion of the jQuery file, it is here that I suspect the issue lies.
 However, with every attempt to fix made, the layout is distorted wildly, and when the modal and jQuery aspects are removed, it does not restore functionality to the buttons.
 
-After many attempted fixes, it turns out it wasn't a problem caused by the modal, but caused from adding in setState, requiredState and currentState elements to the game.js. Further work will be required on this to ensure it can still function as required.
+After many attempted fixes, it turns out it wasn't a problem caused by the modal, but caused from adding in setState, requiredState and currentState elements to the game.js.
+
+```
+    function startGame() {
+        state = {BjornPleased = false, SigurdPleased = false, AstridPleased = false, hasPaintedShield = false}
+        show = showTextNode(1)
+    }
+```
+After much research, it was discovered to be an issue relating to the Syntex Error: invalid shorthand proprty initializer, 
+so the states were changed from **BjornPleased = true**, to **BjornPleased: true**, etc.
 
 
 ### Game.html code error

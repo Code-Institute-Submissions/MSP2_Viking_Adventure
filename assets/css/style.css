@@ -41,6 +41,7 @@ a:hover {
     -moz-transition: all 0.30s ease-in-out;
     -webkit-transition: all 0.30s ease-in-out;
 }
+
 /* ----------------------------------------------- Home Page */
 
 .start-help-buttons{
@@ -83,16 +84,9 @@ a:hover {
 
 /* ----------------------------------------------- Game Page */
 
-
 .game-container {
     max-width: 800px;
 }
-
-/* Set a media query pading top to make sure the dialogue box stays where we want it to go
-Add the states BjornPleased = false etc to the state function at the beginning of the game
-Add jQuery to fix the DOM stuff
-Add if else statements to get the states right.
-Can have a chat with mentor again if needed to get the js stuff right.
 
 /* Navbar */
 
@@ -118,8 +112,10 @@ button.btn.btn-primary {
 
 /* Exit Modal */
 
-#warning-modal {
-    z-index: 99999;
+.modal {
+    position: fixed;
+    left: 0;
+    top: 20%;
 }
 
 .modal-content {
@@ -128,8 +124,6 @@ button.btn.btn-primary {
 }
 
 /* Dialogue Box */
-
-
 
 .dialogue-box {
     position: fixed;
@@ -206,16 +200,24 @@ img {
     -webkit-transition: all 0.30s ease-in-out;
 }
 
+/* Media Queries used to keep all text within the game screen */
+
 @media (min-width: 992px) {
+    
     .dialogue-box {
         top: 25%;
         max-height: 150px;
         font-size: 80%;
     }
+
+    .intro-text {
+        top: 25%;
+        height: 33%;
+    }
 }
 
 @media (max-width: 992px) {
-
+    
     .dialogue-box {
         font-size: 80%;
         width: 90vw;
@@ -225,21 +227,26 @@ img {
 }
 
 @media (max-width: 768px) {
+    
     p {
         font-size: 100%;
     }
+
     .intro-text {
         top: 25%;
         height: 35%;
         width: 80%;
         overflow: scroll;
     }
+
     .dialogue-box {
     top: 200px;
     }
+
 }
 
 @media (max-width: 576px) {
+
     .intro-text {
         top: 35%;
         height: 20%;
@@ -263,4 +270,5 @@ img {
         bottom: 50px;
         font-size: 70%;
     }
+
 }

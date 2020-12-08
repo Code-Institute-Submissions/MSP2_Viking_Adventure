@@ -49,6 +49,10 @@ function showDialogue() {
     }
 }
 
+// Add the states BjornPleased = false etc to the state function at the beginning of the game
+// Add jQuery to fix the DOM stuff
+// Add if else statements to get the states right.
+// Can have a chat with mentor again if needed to get the js stuff right.
 
 // ------------------------------------------------------ Button Options
 

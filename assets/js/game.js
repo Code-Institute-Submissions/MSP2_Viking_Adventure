@@ -10,7 +10,7 @@ function startGame() {
 }
 
 function GameComplete() {
-    requiredstate = {BjornPleased: true, SigurdPleased: true, AstridPleased: true,}
+    if (requiredstate = {BjornPleased: true, SigurdPleased: true, AstridPleased: true})
     show = showTextNode(300)
 }
 

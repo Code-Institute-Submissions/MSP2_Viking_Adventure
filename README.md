@@ -1,7 +1,8 @@
 # Milestone Project 2 - Viking Adventure Game
 
-## LIVE LINK HERE
-## GITHUB REPO LINK HERE
+[Viking Adventure Host Link](https://robert-clark-1990.github.io/MSP2_Viking_Adventure/)
+
+[Viking Adventure GitHub Repo Link](https://github.com/Robert-Clark-1990/MSP2_Viking_Adventure)
 
 # Table of Contents
 
@@ -39,6 +40,8 @@
 ---
 
 # Introduction
+
+![Viking Adventure](assets/docs/screenshot.png)
 
 Inspired by classic point and click adventure games such as the Monkey Island series, GAME NAME is a short demo of what will one day become a full length game. 
 In the game, we follow Ivar, a Norse farmer with dreams of becoming a famous Viking warrior. After his farm is attacked by an invading army, he and his family are forced to relocate to a larger settlement nearby.
@@ -86,12 +89,19 @@ The primary font used on this project is [VT323](https://fonts.google.com/specim
 All artwork has been created by project developer, Robert Clark, with inspiration gathered from old Point and Click adventure titles akin to those of the Monkey Island series.
 
 ### Wireframes
+In order to achieve the look and function of an old point and click adventure title, much thought was put into the project.
 
-### Mockups
+![Wireframe](assets/docs/wireframe.png)
 
-### Options Tree
-As this game uses a branching narrative to offer players multiple options, a expansive tree of options had to be created to ensure each avenue was correctly coded. The tree can be seen in its entirety here:
-INSERT TREE
+With the layout of the game established, even greater thought was required to give the user several branching narratives with plenty of choices.
+
+![Wireframe structure](assets/docs/wireframe-structure.png)
+
+In order to keep track of each narrative decision, each choice was written down in an Excel document with corresponding numbers to navigate between options. 
+
+![Excel Screenshot](assets/docs/excel-screenshot.png)
+
+The PDF version of the Excel document can be found in its entirety [here.](assets/docs/Viking-Adventure-ID-Tree.pdf)
 
 ---
 
@@ -233,8 +243,25 @@ After many attempted fixes, it turns out it wasn't a problem caused by the modal
 After much research, it was discovered to be an issue relating to the Syntex Error: invalid shorthand proprty initializer, 
 so the states were changed from **BjornPleased = true**, to **BjornPleased: true**, etc.
 
+### Setting States
 
-### Game.html code error
+Throughout development, there was an ongoing issue with setting states that would be remembered after being met, such as the combination of the Paint and Shield to create the Painted Shield.
+At first, using setState caused an error where the buttons stopped showing the correct text (as mentioned above) and this was fixed by setting the states when the startGame function runs initially.
+However the problem persisted with the states not changing as necessary actions were performed.
+
+```
+    function showTextNode(textNodeIndex) {
+        const textNode = textNodes.find(textNode => textNode.id === textNodeIndex);
+        textElement.innerText = textNode.text;
+        dialogueTextElement.innerText = textNode.dialogue;
+        while (optionButtonsElement.firstChild) {
+        optionButtonsElement.removeChild(optionButtonsElement.firstChild);
+    }
+  ```
+  Following a conversation with one of the Code Institute tutors, it was established that a second function needed to be created similar to how the showTextNode function was used to return text from the TextNode.
+
+
+### Game.html Code Error
 
 During coding, a row div was rendered unneccessary, and blocked out while further testing was required. However, once the decision to delete it was made, it began to throw up an issue wherein the dialogue and 
 choice buttons started being distorted out of shape. The code causing this can be seen below.
@@ -255,10 +282,6 @@ This appeared to revert the structure, so that once the new code was then delete
 ## Validator Test
 
 ## Meeting the Game needs
-
----
-
-# Deployment
 
 As outlined in the Project and User Goals, there were 9 main things that were required of this project:
 
@@ -281,12 +304,16 @@ As outlined in the Project and User Goals, there were 9 main things that were re
 5. To have a bug-free experience.
 
 ### Returning Users
+
 1. To discover my progress has been saved in local storage.
 
 2. To discover alternative dialogue choices based on using incorrect items with things.
 
-3. To be able to play the demo entirely on any screen size I desire and have the interface adapt appropriately.
+3. To be able to play the demo entirely on any screen size and have the interface adapt appropriately.
 
+---
+
+# Deployment
 
 ## Running this project from the repository
 
@@ -327,12 +354,12 @@ This project was created using **Gitpod**, and pushed to **GitHub**. To deploy t
 
 ### Content
 
-* All story, help, and dialogue content was created by the developer, **Robert Clark**.
+* All story, help, and dialogue content was created by the developer, [Robert Clark](https://github.com/Robert-Clark-1990).
 
 
 ### Media
 
-* All artwork and animations were created by the developer, **Robert Clark**.
+* All artwork and animations were created by the developer, [Robert Clark](https://github.com/Robert-Clark-1990).
 
 
 ### Code
@@ -345,3 +372,5 @@ This project was created using **Gitpod**, and pushed to **GitHub**. To deploy t
 * Thanks to [WebDevSimplified](https://www.youtube.com/channel/UCFbNIlppjAuEX4znoulh0Cw) for his Text Adventure video.
 
 * Thanks to [Ron Gilbert](https://grumpygamer.com/) for creating the Monkey Island series, which inspired this project in the first place.
+
+* Thanks to the amazing tutors at [Code Institute](https://codeinstitute.net/) who offered support and advice through the project's more frustrating sections.

@@ -1,50 +1,86 @@
-const textElement = document.getElementById('choice')
-const optionButtonsElement = document.getElementById('option-buttons')
-const dialogueTextElement = document.getElementById('dialogue')
+const textElement = document.getElementById('choice');
+const optionButtonsElement = document.getElementById('option-buttons');
+const dialogueTextElement = document.getElementById('dialogue');
 
-let state = {}
+let state = {};
+
+// Sets the game at 0 with state of all members of the High Council not pleased, no painted shield, and all other inventory items set to true
 
 function startGame() {
-    state = {BjornPleased: false, SigurdPleased: false, AstridPleased: false, hasPaintedShield: false}
-    show = showTextNode(0)
+    state = {
+        BjornPleased: false, 
+        SigurdPleased: false, 
+        AstridPleased: false, 
+        hasPaintedShield: false,
+        hasSword: true,
+        hasAxe: true,
+        hasGold: true,
+        hasPaint: true,
+        hasShield: true,
+        hasSnacks: true,
+    };
+    show = showTextNode(0);
 }
+
+// Once all members of the High Council are pleased, the game should move onto ID 300 and the win state
 
 function GameComplete() {
-    if (requiredstate = {BjornPleased: true, SigurdPleased: true, AstridPleased: true})
-    show = showTextNode(300)
+    state = {
+        BjornPleased: true, 
+        SigurdPleased: true, 
+        AstridPleased: true
+    };
+    show = showTextNode(300);
 }
 
+// Uses the ID tree below to bring the correct node ID
+
 function showTextNode(textNodeIndex) {
-  const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
-  textElement.innerText = textNode.text
-  dialogueTextElement.innerText = textNode.dialogue
-  while (optionButtonsElement.firstChild) {
-    optionButtonsElement.removeChild(optionButtonsElement.firstChild)
+    const textNode = textNodes.find(textNode => textNode.id === textNodeIndex);
+    textElement.innerText = textNode.text;
+    dialogueTextElement.innerText = textNode.dialogue;
+    while (optionButtonsElement.firstChild) {
+    optionButtonsElement.removeChild(optionButtonsElement.firstChild);
   }
+
+  // Uses the ID tree below to set the state
+
+  function showState(stateIndex) {
+    const stateSelect = textNodes.find(textNode => textNode.setState === stateIndex);
+    return state;
+  }
+
+  // Expands and reduces number of buttons, and returns the correct text response
 
   textNode.options.forEach(option => {
     if (showOption(option)) {
-      const button = document.createElement('button')
-      button.innerText = option.text
-      button.classList.add('btn')
-      button.addEventListener('click', () => selectOption(option))
-      optionButtonsElement.appendChild(button)
+        const button = document.createElement('button');
+        button.innerText = option.text;
+        button.classList.add('btn');
+        button.addEventListener('click', () => selectOption(option));
+        optionButtonsElement.appendChild(button);
     }
-  })
+  });
 }
 
 function showOption(option) {
-  return option.requiredState == null || option.requiredState(state)
+    return option.requiredState == null || option.requiredState(state);
 }
 
+// starts the game if the textNodeID is equal to or less than 0, and ends the game once the three states are met
+
 function selectOption(option) {
-  const nextTextNodeId = option.nextText
-  if (nextTextNodeId <= 0) {
-    return startGame()
-  }
-  state = Object.assign(state, option.setState)
-  showTextNode(nextTextNodeId)
+    const nextTextNodeId = option.nextText;
+    if (nextTextNodeId <= 0) {
+        return startGame();
+    } else if (state == {BjornPleased: true, SigurdPleased: true, AstridPleased: true}) {
+        return GameComplete();
+    }
+    state = Object.assign(state, option.setState);
+    showTextNode(nextTextNodeId);
 }
+
+// Stops dialogue from sitting in the dialogue box after a new decision is selected
 
 function showDialogue() {
     if (textNode.dialogue === "") {
@@ -54,11 +90,11 @@ function showDialogue() {
     }
 }
 
-// function PaintedShield() {  if (textNodeId === 88)   set (hasPaintedShield: true)   }
+// function PaintedShield() {  if (textNodeId == 88)   set (hasPaintedShield: true)   }
 
 // Add jQuery to fix the DOM stuff
 // Add if else statements to get the states right.
-// Can have a chat with mentor again if needed to get the js stuff right.
+
 
 // ------------------------------------------------------ Button Options
 
@@ -451,7 +487,13 @@ const textNodes = [
             },
             {
                 text: "Shield",
+                requiredState: (currentState) => currentState.hasShield,
                 nextText: 14,
+            },
+            {
+                text: "Painted Shield",
+                requiredState: (currentState) => currentState.hasPaintedShield,
+                nextText: 107,
             },
             {
                 text: "Snacks",
@@ -520,6 +562,12 @@ const textNodes = [
         options: [
             {
                 text: "Shield",
+                requiredState: (currentState) => currentState.hasShield,
+                nextText: 75,
+            },
+            {
+                text: "Painted Shield",
+                requiredState: (currentState) => currentState.hasPaintedShield,
                 nextText: 75,
             },
             {
@@ -589,6 +637,12 @@ const textNodes = [
         options: [
             {
                 text: "Shield",
+                requiredState: (currentState) => currentState.hasShield,
+                nextText: 75,
+            },
+            {
+                text: "Painted Shield",
+                requiredState: (currentState) => currentState.hasPaintedShield,
                 nextText: 75,
             },
             {
@@ -605,6 +659,8 @@ const textNodes = [
             },
          ]
     },
+
+//----------- Sword and Axe outcomes
     {
         id: 69,
         text: "",
@@ -737,6 +793,12 @@ const textNodes = [
         options: [
             {
                 text: "Shield",
+                requiredState: (currentState) => currentState.hasShield,
+                nextText: 72,
+            },
+            {
+                text: "Painted Shield",
+                requiredState: (currentState) => currentState.hasPaintedShield,
                 nextText: 72,
             },
             {
@@ -753,6 +815,8 @@ const textNodes = [
             },
          ]
     },
+
+//----------- Gold outcomes
     {
         id: 79,
         text: "",
@@ -841,7 +905,13 @@ const textNodes = [
         options: [
             {
                 text: "Shield",
+                requiredState: (currentState) => currentState.hasShield,
                 nextText: 88,
+            },
+            {
+                text: "Painted Shield",
+                requiredState: (currentState) => currentState.hasPaintedShield,
+                nextText: 111,
             },
             {
                 text: "Snacks",
@@ -857,6 +927,8 @@ const textNodes = [
             },
          ]
     },
+
+//----------- Paint outcomes
     {
         id: 85,
         text: "",
@@ -872,7 +944,7 @@ const textNodes = [
         id: 88,
         text: "",
         dialogue: "Ivar: It looks much better now. I should have done that ages ago.",
-        setState: { hasPaintedShield: true },
+        setState: { hasShield: false, hasPaintedShield: true },
         options: [
             {
                 text: "Continue",
@@ -1021,6 +1093,12 @@ const textNodes = [
             },
             {
                 text: "Shield",
+                requiredState: (currentState) => currentState.hasShield,
+                nextText: 75,
+            },
+            {
+                text: "Painted Shield",
+                requiredState: (currentState) => currentState.hasPaintedShield,
                 nextText: 75,
             },
             {
@@ -1197,12 +1275,14 @@ const textNodes = [
                 nextText: 117,
             },
             {
-                text: "Painted Shield",
-                nextText: 33,
+                text: "Shield",
+                requiredState: (currentState) => currentState.hasShield,
+                nextText: 117,
             },
             {
-                text: "Shield",
-                nextText: 117,
+                text: "Painted Shield",
+                requiredState: (currentState) => currentState.hasPaintedShield,
+                nextText: 33,
             },
             {
                 text: "Snacks",
@@ -1544,7 +1624,13 @@ const textNodes = [
             },
             {
                 text: "Shield",
+                requiredState: (currentState) => currentState.hasShield,
                 nextText: 64,
+            },
+            {
+                text: "Painted Shield",
+                requiredState: (currentState) => currentState.hasPaintedShield,
+                nextText: 66,
             },
             {
                 text: "Snacks",

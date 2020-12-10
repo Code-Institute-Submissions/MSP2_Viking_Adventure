@@ -3,6 +3,7 @@ const optionButtonsElement = document.getElementById('option-buttons');
 const dialogueTextElement = document.getElementById('dialogue');
 
 let state = {};
+let currentState = {};
 
 // Sets the game at 0 with state of all members of the High Council not pleased, no painted shield, and all other inventory items set to true
 
@@ -19,13 +20,15 @@ function startGame() {
         hasShield: true,
         hasSnacks: true,
     };
+    currentState = {};
     show = showTextNode(0);
+    show = showState();
 }
 
 // Once all members of the High Council are pleased, the game should move onto ID 300 and the win state
 
 function GameComplete() {
-    state = {
+    currentState = {
         BjornPleased: true, 
         SigurdPleased: true, 
         AstridPleased: true
@@ -39,23 +42,25 @@ function showTextNode(textNodeIndex) {
     const textNode = textNodes.find(textNode => textNode.id === textNodeIndex);
     textElement.innerText = textNode.text;
     dialogueTextElement.innerText = textNode.dialogue;
+// Expands and reduces number of buttons as necessary
     while (optionButtonsElement.firstChild) {
     optionButtonsElement.removeChild(optionButtonsElement.firstChild);
   }
 
-  // Uses the ID tree below to set the state
+  // Uses the ID tree below to set the state ------------------------------------- THIS BIT IS WHAT I AM HAVING AN ISSUE WITH
 
   function showState(stateIndex) {
-    const stateSelect = textNodes.find(textNode => textNode.setState === stateIndex);
-    return state;
+    const stateSelect = textNodes.find(stateSelect => option.setState === stateIndex);
+    if (stateSelect + option.setState == currentState);
+    return currentState;
   }
 
-  // Expands and reduces number of buttons, and returns the correct text response
+  // Returns the correct text response to the buttons
 
   textNode.options.forEach(option => {
     if (showOption(option)) {
         const button = document.createElement('button');
-        button.innerText = option.text;
+        button.innerText = option.text;          
         button.classList.add('btn');
         button.addEventListener('click', () => selectOption(option));
         optionButtonsElement.appendChild(button);
@@ -83,18 +88,19 @@ function selectOption(option) {
 // Stops dialogue from sitting in the dialogue box after a new decision is selected
 
 function showDialogue() {
-    if (textNode.dialogue === "") {
+    if (textNodes.dialogue === "") {
         dialogue-box.display; "none";
     } else {
         dialogue-box.display; "block";
     }
 }
 
-// function PaintedShield() {  if (textNodeId == 88)   set (hasPaintedShield: true)   }
 
-// Add jQuery to fix the DOM stuff
-// Add if else statements to get the states right.
+// ------------------------------------------------------ Set States
 
+const stateSelect = [
+    
+]
 
 // ------------------------------------------------------ Button Options
 
@@ -1001,7 +1007,7 @@ const textNodes = [
          ]
     },
     {
-        id: 82,
+        id: 92,
         text: "Use Shield with",
         dialogue: "",
         options: [

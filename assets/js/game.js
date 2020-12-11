@@ -3,7 +3,6 @@ const optionButtonsElement = document.getElementById('option-buttons');
 const dialogueTextElement = document.getElementById('dialogue');
 
 let state = {};
-let currentState = {};
 
 // Sets the game at 0 with state of all members of the High Council not pleased, no painted shield, and all other inventory items set to true
 
@@ -20,7 +19,6 @@ function startGame() {
         hasShield: true,
         hasSnacks: true,
     };
-    currentState = {};
     show = showTextNode(0);
     show = showState();
 }
@@ -28,7 +26,7 @@ function startGame() {
 // Once all members of the High Council are pleased, the game should move onto ID 300 and the win state
 
 function GameComplete() {
-    currentState = {
+    state = {
         BjornPleased: true, 
         SigurdPleased: true, 
         AstridPleased: true
@@ -47,11 +45,11 @@ function showTextNode(textNodeIndex) {
     optionButtonsElement.removeChild(optionButtonsElement.firstChild);
   }
 
-  // Uses the ID tree below to set the state ------------------------------------- THIS BIT IS WHAT I AM HAVING AN ISSUE WITH
+  // Uses the ID tree below to set the state
 
   function showState(stateIndex) {
     const stateSelect = textNodes.find(stateSelect => option.setState === stateIndex);
-    if (stateSelect + option.setState == currentState);
+    if (stateSelect, textNode.setState == currentState);
     return currentState;
   }
 
@@ -94,13 +92,6 @@ function showDialogue() {
         dialogue-box.display; "block";
     }
 }
-
-
-// ------------------------------------------------------ Set States
-
-const stateSelect = [
-    
-]
 
 // ------------------------------------------------------ Button Options
 

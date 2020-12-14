@@ -83,16 +83,6 @@ function selectOption(option) {
     showTextNode(nextTextNodeId);
 }
 
-// Stops dialogue from sitting in the dialogue box after a new decision is selected
-
-function showDialogue() {
-    if (textNodes.dialogue === "") {
-        dialogue-box.display; "none";
-    } else {
-        dialogue-box.display; "block";
-    }
-}
-
 // ------------------------------------------------------ Button Options
 
 const textNodes = [
@@ -1829,6 +1819,6 @@ const textNodes = [
         ]
     },
 
-]
+];
 
-startGame()
+startGame();

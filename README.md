@@ -47,6 +47,7 @@ Inspired by classic point and click adventure games such as the Monkey Island se
 In the game, we follow Ivar, a Norse farmer with dreams of becoming a famous Viking warrior. After his farm is attacked by an invading army, he and his family are forced to relocate to a larger settlement nearby.
 It is here the game begins. In order to secure a place for his family in the new settlement, Ivar must first meet with and win over the high council, made up of three important figures:
 Jarl Bjørn Odensson, his wife Astrid, and his prized warrior, Sigurd.
+
 The player will guide Ivar through a series of options, learning more about the three members of the high council, and what exactly they can do to win over each member.
 As the Jarl of the settlement, Bjørn has riches beyond his wildest imaginations, so the player must use everything they have in their inventory to create something truly unique to win him over.
 Astrid, a wise and wistful poet, is searching for someone to match her intellect, and so challenges Ivar to answer three riddles, each of which he must get right in order to succeed.
@@ -65,14 +66,14 @@ this project aims to deliver an interesting, engaging, puzzle-focused experience
 
 ## User Stories
 
-As a first-time player, I want to:
+**As a first-time player, I want to:**
 * Understand the premise of the game, and the object required to succeed.
 * Be presented with an easily understood user interface.
 * Be able to read instructions on how the game works.
 * Navigate through the various challenges presented with help from dialogue and contextual clues.
 * Have a bug-free experience.
 
-As a returning player, I want to:
+**As a returning player, I want to:**
 * Discover my progress has been saved in local storage.
 * Discover alternative dialogue choices based on using incorrect items with things.
 * Be able to play the demo entirely on any screen size I desire and have the interface adapt appropriately.
@@ -194,6 +195,18 @@ Through the interactive buttons provided at the bottom of the page, users must u
 
    GifMaker was used to turn the artwork into animated gifs, giving the game a more interactive feeling.
 
+7. [EZGif](https://ezgif.com/)
+
+   EZGif was used to optimise the animations used in order to improve site performance.
+
+8. [JS Hint](https://jshint.com/)
+
+   JS Hint was used to validate the JavaScript code used in the project.
+
+9. [W3C Markup Validation](https://validator.w3.org/#validate_by_input) 
+   
+   The W3C Markup Validation was used to ensure HTML met the necessary standards.
+
 ---
 
 # Testing
@@ -285,7 +298,72 @@ This appeared to revert the structure, so that once the new code was then delete
 
 ## Performance
 
+In order to bring the project up to the highest standards, the Chrome Lighthouse function was used. 
+
+![Lighthouse](assets/docs/lighthouse-screenshot.png)
+![Performance](assets/docs/performance-screenshot.png)
+![Performance opportunities](assets/docs/performance-screenshot-detail.png)
+
+As expected, performance was a key issue for the project due to its use of animated gifs, and lengthy JavaScript functions. 
+In order to improve this aspect, the gifs were optimised using **EZGif** as the removal of the gifs was not an option if the project was to uphold its intent to feel like a game.
+
+But the biggest improvement came when the **script** tags in the **head** element were moved down to the bottom, which pushed the site performance from mid 70s up into the 90s.
+
+![Performance fixed](assets/docs/performance-screenshot-improved.png)
+
 ## Validator Test
+
+## W3 HTML Validator
+
+The [W3C Markup Validation](https://validator.w3.org/#validate_by_input) was used to ensure HTML met the necessary standards.
+
+### Index page
+
+* Validator returned with: **Error: Bad value 800px for attribute width on element img: Expected a digit but saw p instead.**
+
+   To fix: px deleted from width and height attributes.
+
+* Validator returned with: **Error: Bad value 526px for attribute height on element img: Expected a digit but saw p instead.**
+
+   To fix: px deleted from width and height attributes.
+
+* Validator returned with: **Warning: Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.**
+
+   To fix: header element added.
+
+### Intro page
+
+* Validator returned with: **Warning: Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.**
+
+   To fix: header element added.
+
+### help page
+
+* Validator confirmed **no errors or warnings to show**.
+
+### Game page
+
+* Validator returned with: **Error: Element button not allowed as child of element ul in this context. (Suppressing further errors from this subtree.)**
+
+   To fix: Navbar moved out of the unnecessary **ul** element.
+
+* Validator returned with: **Error: Element button not allowed as child of element ul in this context. (Suppressing further errors from this subtree.)**
+
+   To fix: Navbar moved out of the unnecessary **ul** element.
+
+* Validator returned with: **Error: Bad value link for attribute type on element button.**
+
+   To fix: button type changed from **link** to **button** on the button that returns users to the main menu.
+
+* Validator returned with: **Error: The aria-labelledby attribute must point to an element in the same document.**
+
+   To fix: Removed the **aria-labelledby** attribute from the help modal.
+
+## JS Hint Validator
+
+[JS Hint](https://jshint.com/) was used to validate JavaScript code used in the project.
+
+### Game.js
 
 ## Meeting the Game needs
 

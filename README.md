@@ -1,41 +1,41 @@
 # Milestone Project 2 - Viking Adventure Game
 
-[Viking Adventure Host Link](https://robert-clark-1990.github.io/MSP2_Viking_Adventure/)
+- [Viking Adventure Host Link](https://robert-clark-1990.github.io/MSP2_Viking_Adventure/)
 
-[Viking Adventure GitHub Repo Link](https://github.com/Robert-Clark-1990/MSP2_Viking_Adventure)
+- [Viking Adventure GitHub Repo Link](https://github.com/Robert-Clark-1990/MSP2_Viking_Adventure)
 
 # Table of Contents
 
-* Introduction
+- [Introduction](#introduction)
 
-1. User Experience (UX)
-* Project Goals
-* User Stories
-* Design
+- [User Experience](#user-experience)
+   - Project Goals
+   - User Stories
+   - Design
 
-2. Features
-* Existing Features
-* Future features to implement
+- [Features](#features)
+   - Existing Features
+   - Future features to implement
 
-3. Technologies Used
-* Language Used
-* Frameworks, Libraries & Programs Used
+- [Technologies Used](#technologies-used)
+   - Language Used
+   - Frameworks, Libraries & Programs Used
 
-4. Testing
-* Bug fixes
-* Performance
-* Validator Test
-* Meeting the Game needs
+- [Testing](#testing)
+   - Bug fixes
+   - Performance
+   - Validator Test 
+   - Meeting the Game needs
 
-5. Deployment
-* Running this project from the repository
-* Running this project locally
+- [Deployment](#deployment)
+   - Running this project from the repository 
+   - Running this project locally
 
-6. Credits
-* Content
-* Media
-* Code
-* Acknowledgements
+- [Credits](#credits)
+   - Content
+   - Media
+   - Code
+   - Acknowledgements
 
 ---
 
@@ -43,31 +43,31 @@
 
 ![Viking Adventure](assets/docs/screenshot.png)
 
-Inspired by classic point and click adventure games such as the Monkey Island series, GAME NAME is a short demo of what will one day become a full length game. 
+Inspired by classic point and click adventure games such as the Monkey Island series, **Viking Adventure** is a short demo of what will one day become a full-length game. 
 In the game, we follow Ivar, a Norse farmer with dreams of becoming a famous Viking warrior. After his farm is attacked by an invading army, he and his family are forced to relocate to a larger settlement nearby.
-It is here the game begins. In order to secure a place for his family in the new settlement, Ivar must first meet with an win over the high council, made up of three important figures:
+It is here the game begins. In order to secure a place for his family in the new settlement, Ivar must first meet with and win over the high council, made up of three important figures:
 Jarl Bjørn Odensson, his wife Astrid, and his prized warrior, Sigurd.
 The player will guide Ivar through a series of options, learning more about the three members of the high council, and what exactly they can do to win over each member.
 As the Jarl of the settlement, Bjørn has riches beyond his wildest imaginations, so the player must use everything they have in their inventory to create something truly unique to win him over.
 Astrid, a wise and wistful poet, is searching for someone to match her intellect, and so challenges Ivar to answer three riddles, each of which he must get right in order to succeed.
-Sigurd, a battlehardened drengr (warrior) will only approve of someone who can beat him in battle. While Ivar has access to both a sword and an axe, facing Siguard in combat will end in failure. In order to beat this formidable foe, Ivar must think outside the box...
+Sigurd, a battle-hardened drengr (warrior) will only approve of someone who can beat him in battle. While Ivar has access to both a sword and an axe, facing Sigurd in combat will end in failure. In order to beat this formidable foe, Ivar must think outside the box...
 Only once all three members of the high council have been won over will the player be granted refuge, thus concluding the demo.
 
 ---
 
-# User Experience (UX)
+# User Experience
 
 ## Project Goals
 
-As a homage to the old point and click adventure games of the nineties, this project aims to provide players with an experience reminscent of those old games. 
+As a homage to the old point and click adventure games of the nineties, this project aims to provide players with an experience reminiscent of those old games. 
 The art style, user interface, and puzzles will be themed around this retro style. Offering players a demonstration of what will one day become a much larger game, 
 this project aims to deliver an interesting, engaging, puzzle-focused experience that will leave players searching for more.
 
 ## User Stories
 
-As a first time player, I want to:
+As a first-time player, I want to:
 * Understand the premise of the game, and the object required to succeed.
-* Be presented with an easily-understood user interface.
+* Be presented with an easily understood user interface.
 * Be able to read instructions on how the game works.
 * Navigate through the various challenges presented with help from dialogue and contextual clues.
 * Have a bug-free experience.
@@ -80,16 +80,20 @@ As a returning player, I want to:
 ## Design
 
 ### Colour Scheme
-In keeping with the Point and Click asthetic, an 8-bit art style has been used throughout the game.
+In keeping with the Point and Click aesthetic, an 8-bit art style has been used throughout the game.
 
 ### Typography
-The primary font used on this project is [VT323](https://fonts.google.com/specimen/VT323?preview.text=Talk%20Use%20Inventory&preview.text_type=custom&sidebar.open=true&selection.family=VT323). This was chosen to stay in keeping with the artistic style.
+The primary font used on this project is [VT323](https://fonts.google.com/specimen/VT323?preview.text=Talk%20Use%20Inventory&preview.text_type=custom&sidebar.open=true&selection.family=VT323). 
+This was chosen to stay in keeping with the artistic style.
 
 ### Artwork
 All artwork has been created by project developer, Robert Clark, with inspiration gathered from old Point and Click adventure titles akin to those of the Monkey Island series.
 
 ### Wireframes
-In order to achieve the look and function of an old point and click adventure title, much thought was put into the project.
+In order to achieve the look and function of an old point and click adventure title, much thought was put into the project. 
+As you can see from the wireframe below, the user interface changed marginally as work began, replacing the separated choice and inventory sections and merging them into one. 
+This choice was made to ensure the user interface looked identical on all screen sizes, therefore ensuring each user had the same level of experience.
+The hint button was also removed to encourage users to use the tools at their disposal to discover the correct answers.
 
 ![Wireframe](assets/docs/wireframe.png)
 
@@ -143,6 +147,8 @@ Through the interactive buttons provided at the bottom of the page, users must u
 
 1. As this game uses gif-based images to present a living world, a future update will overhaul this by presenting layered content that users can navigate the character of Ivor through, interacting with things he sees both in and outside the camp.
 
+2. Expanding the story to flesh out Ivar's adventure will provide users with a more fulfilling narrative, allowing them to grow attached to the characters and the world.
+
 ---
 
 # Technologies Used
@@ -151,11 +157,11 @@ Through the interactive buttons provided at the bottom of the page, users must u
 
 1. [HTML5](https://en.wikipedia.org/wiki/HTML5)
 
-   This project uses HTML5 as it's main language.
+   This project uses HTML5 as its main language.
 
 2. [CSS3](https://en.wikipedia.org/wiki/CSS)
 
-   This project uses CSS3 for it's styling.
+   This project uses CSS3 for its styling.
 
 3. [JavaScript](https://www.javascript.com/)
 
@@ -229,7 +235,7 @@ Despite best efforts to retrieve a solution online, it was the Code Institute tu
 ### Buttons
 
 During the development of the modal, an issue arose in which the player choice buttons on the game.html page stopped displaying the various IDs shown in game.js.
-As this occured immediately after the implementation of the modal and the inclusion of the jQuery file, it is here that I suspect the issue lies.
+As this occurred immediately after the implementation of the modal and the inclusion of the jQuery file, it is here that I suspect the issue lies.
 However, with every attempt to fix made, the layout is distorted wildly, and when the modal and jQuery aspects are removed, it does not restore functionality to the buttons.
 
 After many attempted fixes, it turns out it wasn't a problem caused by the modal, but caused from adding in setState, requiredState and currentState elements to the game.js.
@@ -240,7 +246,7 @@ After many attempted fixes, it turns out it wasn't a problem caused by the modal
         show = showTextNode(1)
     }
 ```
-After much research, it was discovered to be an issue relating to the Syntex Error: invalid shorthand proprty initializer, 
+After much research, it was discovered to be an issue relating to the Syntax Error: invalid shorthand property initializer, 
 so the states were changed from **BjornPleased = true**, to **BjornPleased: true**, etc.
 
 ### Setting States
@@ -263,7 +269,7 @@ However the problem persisted with the states not changing as necessary actions 
 
 ### Game.html Code Error
 
-During coding, a row div was rendered unneccessary, and blocked out while further testing was required. However, once the decision to delete it was made, it began to throw up an issue wherein the dialogue and 
+During coding, a row div was rendered unnecessary, and blocked out while further testing was required. However, once the decision to delete it was made, it began to throw up an issue wherein the dialogue and 
 choice buttons started being distorted out of shape. The code causing this can be seen below.
 
 ```
@@ -274,7 +280,7 @@ choice buttons started being distorted out of shape. The code causing this can b
         </div> --> 
 ```
 
-Even though it was blocked out, it was still causing a bug when deleted. To fix it, the code was rewritten without being blocked out, then the blocked out code was deleted at the same time.
+Even though it was blocked out, it was still causing a bug when deleted. To fix it, the code was rewritten without being blocked out, then the blocked-out code was deleted at the same time.
 This appeared to revert the structure, so that once the new code was then deleted, it functioned as intended.
 
 ## Performance
@@ -287,21 +293,26 @@ As outlined in the Project and User Goals, there were 9 main things that were re
 
 ### Project Goals
 
-1. Through the use of a retro art style, user interface, and puzzles, provide players with an experience reminscent of old point and click adventure games. 
+1. Through the use of a retro art style, user interface, and puzzles, provide players with an experience reminiscent of old point and click adventure games. 
 
 2. To deliver an interesting, engaging, puzzle-focused experience that will leave players searching for more.
+
+Use of a recognisable artistic style, and building out a rich selection of user choices has achieved the required experience that will appease fans of old point and click adventure games.
 
 ### First-time Users
 
 1. To be able to understand the premise of the game, and the object required to succeed.
 
-2. To be presented with an easily-understood user interface.
+2. To be presented with an easily understood user interface.
 
 3. To be able to read instructions on how the game works.
 
 4. To be able to navigate through the various challenges presented with help from dialogue and contextual clues.
 
 5. To have a bug-free experience.
+
+Through the implementation of a help page, and an introduction page, users are given ample understanding of the game's story, what is required of them to win, and how to navigate through the game to do so.
+Contextual clues have been left in the game's artwork to encourage players to discover the answers they require, as well as through conversation with the game's roster of characters.
 
 ### Returning Users
 
@@ -311,13 +322,16 @@ As outlined in the Project and User Goals, there were 9 main things that were re
 
 3. To be able to play the demo entirely on any screen size and have the interface adapt appropriately.
 
+Thanks to the comprehensive options tree, users have a plethora of different dialogue and narrative responses to their many actions, providing a more expansive and replayable experience.
+Measures have been put in place to ensure that not only does the game run on any screen size, but that it does so in a functional and visually appeasing manner.
+
 ---
 
 # Deployment
 
 ## Running this project from the repository
 
-This project was created using **Gitpod**, and pushed to **GitHub**. To deploy this page to GitHub from it's GitHub repository, the following steps were taken:
+This project was created using **Gitpod** and pushed to **GitHub**. To deploy this page to GitHub from its GitHub repository, the following steps were taken:
 
 1. Visit [GitHub](https://github.com/) and log in.
 

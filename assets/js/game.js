@@ -293,8 +293,8 @@ const textNodes = [
                 nextText: 21,
             },
             {
-                text: "Back",
-                nextText: 2,
+                text: "More",
+                nextText: 102,
             },
         ]
     },
@@ -623,7 +623,7 @@ const textNodes = [
             },
             {
                 text: "More",
-                nextText: 97,
+                nextText: 100,
             },
          ]
     },
@@ -1353,11 +1353,11 @@ const textNodes = [
             },
             {
                 text: "Give Up",
-                nextText: 2,
+                nextText: 4,
             }
         ]
     },
-    // 35 is fail question
+    // 35 is first fail question
     {
         id: 35,
         dialogue: "Astrid: Incorrect. I fear you aren't as wise as I hoped...",
@@ -1365,7 +1365,7 @@ const textNodes = [
         options: [
             {
                 text: "Yes",
-                nextText: 24,
+                nextText: 34,
             },
             {
                 text: "Later",
@@ -1401,16 +1401,32 @@ const textNodes = [
             },
             {
                 text: "A Harpy",
-                nextText: 35,
+                nextText: 119,
             },
             {
-                text: "A  Politician",
-                nextText: 35,
+                text: "A Politician",
+                nextText: 119,
             },
             {
                 text: "Give Up",
-                nextText: 2,
+                nextText: 4,
             }
+        ]
+    },
+    // second fail outcome
+    {
+        id: 119,
+        dialogue: "Astrid: Incorrect. I fear you aren't as wise as I hoped...",
+        text: "You got it wrong. Try again?",
+        options: [
+            {
+                text: "Yes",
+                nextText: 39,
+            },
+            {
+                text: "Later",
+                nextText: 4,
+            },
         ]
     },
     //40 is correct answer and move onto next dialogue, then 43
@@ -1437,7 +1453,7 @@ const textNodes = [
         options: [
             {
                 text: "A Soldier",
-                nextText: 35,
+                nextText: 120,
             },
             {
                 text: "A Shield",
@@ -1445,12 +1461,28 @@ const textNodes = [
             },
             {
                 text: "A Sword",
-                nextText: 35,
+                nextText: 120,
             },
             {
                 text: "Give Up",
-                nextText: 2,
+                nextText: 4,
             }
+        ]
+    },
+    // third fail answer
+    {
+        id: 120,
+        dialogue: "Astrid: Incorrect. I fear you aren't as wise as I hoped...",
+        text: "You got it wrong. Try again?",
+        options: [
+            {
+                text: "Yes",
+                nextText: 43,
+            },
+            {
+                text: "Later",
+                nextText: 4,
+            },
         ]
     },
     //45 is correct answer and grants Astrid Pleased state

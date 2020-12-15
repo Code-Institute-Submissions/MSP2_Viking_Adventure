@@ -207,6 +207,14 @@ Through the interactive buttons provided at the bottom of the page, users must u
    
    The W3C Markup Validation was used to ensure HTML met the necessary standards.
 
+10. [JQuery](https://code.jquery.com/)
+
+   The JQuery library was used.
+
+11. [JSON](https://www.json.org/json-en.html)
+
+   JSON was used to store all of the game data.
+
 ---
 
 # Testing

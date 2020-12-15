@@ -27,10 +27,8 @@ function loadData() {
     });
 }
 
-function startGame() {
-    loadData()  
-
-    show = showState();
+function  startGame() {
+          loadData()  
 }
 
 // Once all members of the High Council are pleased, the game should move onto ID 300 and the win state
@@ -39,7 +37,14 @@ function GameComplete() {
     state = {
         BjornPleased: true, 
         SigurdPleased: true, 
-        AstridPleased: true
+        AstridPleased: true,
+        hasPaintedShield: true,
+        hasSword: true,
+        hasAxe: true,
+        hasGold: true,
+        hasPaint: true,
+        hasShield: true,
+        hasSnacks: true,
     };
     show = showTextNode(300);
 }
@@ -62,11 +67,6 @@ console.log(textNode.condition)
         state[textNode.condition] = true
 }
 console.log(state)
-
-if (hasPaintedShield = true) {
-    
-}
-
 
   // Returns the correct text response to the buttons
 
@@ -97,9 +97,5 @@ function selectOption(option) {
     state = Object.assign(state, option.setState);
     showTextNode(nextTextNodeId);
 }
-
-// ------------------------------------------------------ Button Options
-
-
 
 startGame();

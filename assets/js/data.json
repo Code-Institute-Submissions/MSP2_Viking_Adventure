@@ -188,8 +188,7 @@
     "dialogue":"",
     "options":[
       {"text":"Paint","nextText":13},
-      {"text":"Shield","requiredState":{},"nextText":14},
-      {"text":"Painted Shield","requiredState":{},"nextText":107},
+      {"text":"Shield","nextText":14},
       {"text":"Snacks","nextText":15},
       {"text":"Back","nextText":1}
     ]
@@ -221,11 +220,10 @@
     "text":"Use Sword with",
     "dialogue":"",
     "options":[
-      {"text":"Shield","requiredState":{},"nextText":75},
-      {"text":"Painted Shield","requiredState":{},"nextText":75},
+      {"text":"Shield","nextText":75},
       {"text":"Snacks","nextText":76},
       {"text":"Self","nextText":77},
-      {"text":"Back","nextText":3}
+      {"text":"Back","nextText":1}
     ]
   },
   {
@@ -255,18 +253,17 @@
     "text":"Use Axe with",
     "dialogue":"",
     "options":[
-      {"text":"Shield","requiredState":{},"nextText":75},
-      {"text":"Painted Shield","requiredState":{},"nextText":75},
+      {"text":"Shield","nextText":75},
       {"text":"Snacks","nextText":76},
       {"text":"Self","nextText":77},
-      {"text":"Back","nextText":3}
+      {"text":"Back","nextText":1}
     ]
   },
   {
     "id":69,
     "text":"",
     "dialogue":"Ivar: I’m trying to join these people, not kill them.",
-    "options":[{"text":"Continue","nextText":3}]
+    "options":[{"text":"Continue","nextText":1}]
   },
   {
     "id":70,
@@ -278,25 +275,25 @@
     "id":72,
     "text":"",
     "dialogue":"Ivar: That does nothing. I don’t know what I was expecting to happen there...",
-    "options":[{"text":"Continue","nextText":3}]
+    "options":[{"text":"Continue","nextText":1}]
   },
   {
     "id":73,
     "text":"",
     "dialogue":"Ivar: The only thing I paint my weapons in is the blood of my enemies… and the occasional splash of metal polish.",
-    "options":[{"text":"Continue","nextText":3}]
+    "options":[{"text":"Continue","nextText":1}]
   },
   {
     "id":75,
     "text":"",
     "dialogue":"Ivar: That feels counterproductive.",
-    "options":[{"text":"Continue","nextText":3}]
+    "options":[{"text":"Continue","nextText":1}]
   },
   {
     "id":76,
     "text":"",
     "dialogue":"Ivar: I’m not going to waste this tasty nut-based snack like that.",
-    "options":[{"text":"Continue","nextText":3}]
+    "options":[{"text":"Continue","nextText":1}]
   },
   {
     "id":77,
@@ -331,30 +328,29 @@
     "text":"Use Gold with",
     "dialogue":"",
     "options":[
-      {"text":"Shield","requiredState":{},"nextText":72},
-      {"text":"Painted Shield","requiredState":{},"nextText":72},
+      {"text":"Shield","nextText":72},
       {"text":"Snacks","nextText":72},
       {"text":"Self","nextText":83},
-      {"text":"Back","nextText":3}
+      {"text":"Back","nextText":1}
     ]
   },
   {
     "id":79,
     "text":"",
     "dialogue":"Ivar: Bjorn made it clear they don’t want my gold. More for me, I guess.",
-    "options":[{"text":"Continue","nextText":3}]
+    "options":[{"text":"Continue","nextText":1}]
   },
   {
     "id":81,
     "text":"",
     "dialogue":"Ivar: But it’s already so pretty as it is.",
-    "options":[{"text":"Continue","nextText":3}]
+    "options":[{"text":"Continue","nextText":1}]
   },
   {
     "id":83,
     "text":"",
     "dialogue":"Ivar: … Maybe later.",
-    "options":[{"text":"Continue","nextText":3}]
+    "options":[{"text":"Continue","nextText":1}]
   },
   {
     "id":13,
@@ -383,25 +379,24 @@
     "text":"Use Paint with",
     "dialogue":"",
     "options":[
-      {"text":"Shield","requiredState":{},"nextText":88},
-      {"text":"Painted Shield","requiredState":{},"nextText":111},
+      {"text":"Shield","nextText":88},
       {"text":"Snacks","nextText":75},
       {"text":"Self","nextText":83},
-      {"text":"Back","nextText":3}
+      {"text":"Back","nextText":1}
     ]
   },
   {
     "id":85,
     "text":"",
     "dialogue":"Ivar: I don’t think they’d like that.",
-    "options":[{"text":"Continue","nextText":3}]
+    "options":[{"text":"Continue","nextText":1}]
   },
   {
     "id":88,
     "text":"",
     "dialogue":"Ivar: It looks much better now. I should have done that ages ago.",
     "condition": "hasPaintedShield",
-    "options":[{"text":"Continue","nextText":3}]
+    "options":[{"text":"Continue","nextText":1}]
   },
   {
     "id":14,
@@ -433,14 +428,14 @@
       {"text":"Paint","nextText":88},
       {"text":"Snacks","nextText":75},
       {"text":"Self","nextText":75},
-      {"text":"Back","nextText":3}
+      {"text":"Back","nextText":1}
     ]
   },
   {
     "id":90,
     "text":"",
     "dialogue":"Ivar: Jarl Bjorn doesn’t want my shield in this state. It looks so dull.",
-    "options":[{"text":"Continue","nextText":3}]
+    "options":[{"text":"Continue","nextText":1}]
   },
   {
     "id":15,
@@ -470,10 +465,9 @@
     "dialogue":"",
     "options":[
       {"text":"Paint","nextText":75},
-      {"text":"Shield","requiredState":{},"nextText":75},
-      {"text":"Painted Shield","requiredState":{},"nextText":75},
+      {"text":"Shield","nextText":75},
       {"text":"Self","nextText":83},
-      {"text":"Back","nextText":3}
+      {"text":"Back","nextText":1}
     ]
   },
   {
@@ -512,14 +506,14 @@
       {"text":"Paint","nextText":111},
       {"text":"Snacks","nextText":75},
       {"text":"Self","nextText":75},
-      {"text":"Back","nextText":3}
+      {"text":"Back","nextText":1}
     ]
   },
   {
     "id":111,
     "text":"",
     "dialogue":"Ivar: I’ve already painted that.",
-    "options":[{"text":"Continue","nextText":3}]
+    "options":[{"text":"Continue","nextText":1}]
   },
   {
     "id":33,
@@ -555,8 +549,8 @@
     "dialogue":"Bjorn: What is it, boy?",
     "options":[
       {"text":"Paint","nextText":117},
-      {"text":"Shield","requiredState":{},"nextText":117},
-      {"text":"Painted Shield","requiredState":{},"nextText":33},
+      {"text":"Shield","nextText":117},
+      {"text":"Painted Shield","nextText":33},
       {"text":"Snacks","nextText":117},
       {"text":"Back","nextText":1}
     ]
@@ -724,8 +718,8 @@
     "dialogue":"",
     "options":[
       {"text":"Paint","nextText":63},
-      {"text":"Shield","requiredState":{},"nextText":64},
-      {"text":"Painted Shield","requiredState":{},"nextText":66},
+      {"text":"Shield","nextText":64},
+      {"text":"Painted Shield","nextText":66},
       {"text":"Snacks","nextText":65},
       {"text":"Back","nextText":5}
     ]

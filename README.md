@@ -219,6 +219,9 @@ Through the interactive buttons provided at the bottom of the page, users must u
 
 # Testing
 
+The game was tested with friends to check for bugs and to obtain general feedback. This was performed when the project was close to completion. 
+These bugs, and others encountered during development, are outlined below:
+
 ## Bug fixes
 
 ### In-Game Modals
@@ -252,7 +255,6 @@ There was an issue regarding the in-game modals not appearing when requested.
 ```
 Despite best efforts to retrieve a solution online, it was the Code Institute tutors who provided the solution. A missing piece of jQuery code had been excluded from the game.html file, which once added made the first modal work fine.
 
-
 ### Buttons
 
 During the development of the modal, an issue arose in which the player choice buttons on the game.html page stopped displaying the various IDs shown in game.js.
@@ -285,7 +287,8 @@ However the problem persisted with the states not changing as necessary actions 
         optionButtonsElement.removeChild(optionButtonsElement.firstChild);
     }
   ```
-  Following a conversation with one of the Code Institute tutors, it was established that a second function needed to be created similar to how the showTextNode function was used to return text from the TextNode.
+Following a conversation with one of the Code Institute tutors and mentors, it was established that the main data of the choice buttons should be moved to a separate JSON file, 
+and that conditions should be implemented to dictate the change in status.
 
 
 ### Game.html Code Error
@@ -303,6 +306,12 @@ choice buttons started being distorted out of shape. The code causing this can b
 
 Even though it was blocked out, it was still causing a bug when deleted. To fix it, the code was rewritten without being blocked out, then the blocked-out code was deleted at the same time.
 This appeared to revert the structure, so that once the new code was then deleted, it functioned as intended.
+
+
+### Reused Choice IDs
+
+During testing, it was discovered that some of the late stage choices either reused IDs or were linked to the incorrect nextText IDs. To counter, each choice was reviewed and fixed if an error existed.
+
 
 ## Performance
 

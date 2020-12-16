@@ -380,6 +380,7 @@
     "dialogue":"",
     "options":[
       {"text":"Shield","nextText":88},
+      {"text":"Painted Shield","nextText":111},
       {"text":"Snacks","nextText":75},
       {"text":"Self","nextText":83},
       {"text":"Back","nextText":1}

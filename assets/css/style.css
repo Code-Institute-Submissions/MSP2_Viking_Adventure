@@ -79,7 +79,7 @@ a:hover {
 .intro-text {
     position: absolute;
     top: 20%;
-    margin: 20px, 20px, 20px, 20px;
+    margin: 20px;
     background-color: rgba(0, 0, 0, 0.5);
     font-size: 45%;
     width: 80%;
@@ -211,6 +211,7 @@ img {
     padding: 5px;
     color: white;
     outline: none;
+    max-height: 50px;
 }
 
 .btn:hover {

@@ -8,26 +8,22 @@ let state = {};
 
 let paintShield = [12, 29, 51, 62, 74, 82, 87, 96, 100];
 
-var BjornPleased;
-var AstridPleased;
-var SigurdPleased;
-var hasPaintedShield;
 var shield;
 
 // Sets the game at 0 with state of all members of the High Council not pleased, no painted shield, and all other inventory items set to true
 
 function  startGame() {
 
-           state = {
+    state = {
         BjornPleased: 0, 
         SigurdPleased: 0, 
         AstridPleased: 0,
         hasPaintedShield: 0,
     };
-        show = showTextNode(0); 
+        showTextNode(0); 
 }
 
-// Once all members of the High Council are pleased, the game should move onto ID 300 and the win state
+// Game Complete function reaches end node and then resets state
 
 function gameComplete() {
     console.log ("gameComplete");
@@ -37,49 +33,47 @@ function gameComplete() {
         AstridPleased: 0,
         hasPaintedShield: 0,
     };
-    show = showTextNode(300);
+        showTextNode(300);
 }
 
-// Uses the ID tree below to bring the correct node ID
+// Function uses the textNode ID tree below to bring the correct node ID
 
 function showTextNode(textNodeIndex) {
-        if (state.BjornPleased == 1 && state.AstridPleased == 1 && state.SigurdPleased == 1) {
-        gameComplete()
-        return;
+
+// Once all members of the High Council are pleased, the game should move onto ID 300 and the win state
+
+    if (state.BjornPleased == 1 && state.AstridPleased == 1 && state.SigurdPleased == 1) {
+    gameComplete();
+    return;
 }
     const textNode = textNodes.find(textNode => textNode.id === textNodeIndex);
     textElement.innerText = textNode.text;
     dialogueTextElement.innerText = textNode.dialogue;
+
 // Expands and reduces number of buttons as necessary
+
     while (optionButtonsElement.firstChild) {
     optionButtonsElement.removeChild(optionButtonsElement.firstChild);
   }
 
-
 // sets painted shield once painted
 
-shield = ["Shield","Painted Shield"][state.hasPaintedShield]
-console.log(shield, state.hasPaintedShield)
-
+shield = ["Shield","Painted Shield"][state.hasPaintedShield];
+console.log(shield, state.hasPaintedShield);
 
 if (paintShield.includes(textNodeIndex)) {
-    textNode.options[0]["text"] = shield
+    textNode.options[0].text = shield;
 }
-
-
-
 
 // Sets the state once user performs certain actions
 
-console.log(textNode.condition)
+console.log(textNode.condition);
     if (textNode.condition != undefined) {
-        state[textNode.condition] = 1
+        state[textNode.condition] = 1;
 }
-console.log(state)
+console.log(state);
 
-
-
-  // Returns the correct text response to the buttons
+// Returns the correct text response to the buttons
 
   textNode.options.forEach(option => {
     if (showOption(option)) {
@@ -96,12 +90,12 @@ function showOption(option) {
     return option.requiredState == null || option.requiredState(state);
 }
 
-// starts the game if the textNodeID is equal to or less than 0, and ends the game once the three states are met
+// starts the game if the textNodeID is equal to or less than 0, and changes the nextText dependant on the state
 
 function selectOption(textNodeIndex, option) {
     let nextTextNodeId = option.nextText;
     if (Array.isArray(nextTextNodeId)) {
-        nextTextNodeId = option.nextText[state.hasPaintedShield]
+        nextTextNodeId = option.nextText[state.hasPaintedShield];
     }
     if (nextTextNodeId <= 0) {
         return startGame();
@@ -133,7 +127,7 @@ let textNodes =
       {"text":"Look at","nextText":5}
     ]
   },
-  // ------------------------------------------ Talk to functions
+// ------------------------------------------ Talk to functions
   {
     "id":2,
     "text":"Talk to:",
@@ -145,6 +139,7 @@ let textNodes =
       {"text":"Back","nextText":1}
     ]
   },
+// ----------------------------- Bjorn Responses
   {
     "id":6,
     "text":"Talk to Bjorn about:",
@@ -215,6 +210,7 @@ let textNodes =
         {"text":"Continue","nextText":1}
     ]
   },
+// ----------------------------- Astrid Responses
   {
     "id":7,
     "text":"Talk to Astrid about:",
@@ -285,6 +281,7 @@ let textNodes =
         {"text":"Continue","nextText":1}
     ]
   },
+// ----------------------------- Sigurd Responses
   {
     "id":8,
     "text":"Talk to Sigurd about:",
@@ -315,7 +312,7 @@ let textNodes =
         {"text":"Okay then...","nextText":1}
     ]
   },
-    // ------------------------------------------ Use Functions
+// ------------------------------------------ Use Functions
   {
     "id":3,
     "text":"Use",
@@ -338,6 +335,7 @@ let textNodes =
       {"text":"Back","nextText":1}
     ]
   },
+// ----------------------------- Sword and Axe functions
   {
     "id":9,
     "text":"Use Sword with",
@@ -460,6 +458,7 @@ let textNodes =
         {"text":"Game Over","nextText":200}
     ]
   },
+// ----------------------------- Gold functions
   {
     "id":11,
     "text":"Use Gold with",
@@ -517,6 +516,7 @@ let textNodes =
         {"text":"Continue","nextText":1}
     ]
   },
+// ----------------------------- Paint functions
   {
     "id":13,
     "text":"Use Paint with",
@@ -567,6 +567,7 @@ let textNodes =
         {"text":"Continue","nextText":1}
     ]
   },
+// ----------------------------- Shield functions
   {
     "id":14,
     "text":"Use Shield with",
@@ -608,6 +609,7 @@ let textNodes =
         {"text":"Continue","nextText":1}
     ]
   },
+// ----------------------------- Snacks functions
   {
     "id":15,
     "text":"Use Snacks with",
@@ -649,6 +651,7 @@ let textNodes =
         {"text":"Continue","nextText":119}
     ]
   },
+// ----------------------------- Painted Shield functions
   {
     "id":107,
     "text":"Use Painted Sheild with",
@@ -698,7 +701,7 @@ let textNodes =
         {"text":"Continue","nextText":118}
     ]
   },
-    // ------------------------------------------ Challenge Functions
+// ------------------------------------------ Challenge Functions
   {
     "id":4,
     "text":"Challenge",
@@ -707,9 +710,10 @@ let textNodes =
       {"text":"Bjorn","nextText":23},
       {"text":"Astrid","nextText":24},
       {"text":"Sigurd","nextText":25},
-      {"text":"Back","nextText":26}
+      {"text":"Back","nextText":1}
     ]
   },
+// ----------------------------- Bjorn Challenge
   {
     "id":23,
     "text":"Give Bjorn:",
@@ -749,6 +753,7 @@ let textNodes =
         {"text":"Continue","nextText":1}
     ]
   },
+// ----------------------------- Astrid Challenge
   {
     "id":24,
     "dialogue":"Astrid: If you want to win my favour, you must prove your intellect. Answer these riddles three and you shall have what you desire.",
@@ -793,13 +798,13 @@ let textNodes =
     "dialogue":"Astrid: I am both friend and foe. I hurt men and hinder words, yet elevate spirits and speech. We will laugh together, yet you’ll never remember come dawn. Can you solve, oh weary traveler, this riddle?",
     "options":[
       {"text":"Ale","nextText":40},
-      {"text":"A Harpy","nextText":121},
-      {"text":"A Politician","nextText":121},
+      {"text":"A Harpy","nextText":130},
+      {"text":"A Politician","nextText":130},
       {"text":"Give Up","nextText":4}
     ]
   },
   {
-    "id":121,
+    "id":130,
     "dialogue":"Astrid: Incorrect. I fear you aren't as wise as I hoped...",
     "text":"You got it wrong. Try again?",
     "options":[
@@ -821,14 +826,14 @@ let textNodes =
     "text":"What is your answer?",
     "dialogue":"Astrid: Alone I battle, wounded by steel, weary of war. All I see is savage fighting. No assistance will come for my cursed self. Struck by both friend and foe brings resolve for all but me, whose wounds grow ever wider. I demise amidst men, yet the herbs that aid those shalt never cure me. What am I?",
     "options":[
-      {"text":"A Soldier","nextText":120},
+      {"text":"A Soldier","nextText":131},
       {"text":"A Shield","nextText":45},
-      {"text":"A Sword","nextText":120},
+      {"text":"A Sword","nextText":131},
       {"text":"Give Up","nextText":4}
     ]
   },
   {
-    "id":120,
+    "id":131,
     "dialogue":"Astrid: Incorrect. I fear you aren't as wise as I hoped...",
     "text":"You got it wrong. Try again?",
     "options":[
@@ -845,6 +850,7 @@ let textNodes =
         {"text":"Continue","nextText":1}
     ]
   },
+// ----------------------------- Sigurd Challenge
   {
     "id":25,
     "text":"Select Your Weapon of Choice",
@@ -884,7 +890,7 @@ let textNodes =
         {"text":"Continue","nextText":1}
     ]
   },
-    // ------------------------------------------ Look at Functions
+// ------------------------------------------ Look at Functions
   {
     "id":5,
     "text":"Look at",
@@ -1017,7 +1023,7 @@ let textNodes =
         {"text":"Continue","nextText":1}
     ]
   },
-    // ------------------------------------------ Game Fail
+// ------------------------------------------ Game Fail
   {
     "id":200,
     "text":"Would you like to try again?",
@@ -1027,7 +1033,7 @@ let textNodes =
         {"text":"No","nextText":1}
     ]
   },
-    // ------------------------------------------ Game Complete
+// ------------------------------------------ Game Complete
   {
     "id":300,
     "text":"Would you like to play again?",
@@ -1037,6 +1043,6 @@ let textNodes =
         {"text":"No","nextText":1}
     ]
   }
-]
+];
 
 startGame();

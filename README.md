@@ -66,15 +66,12 @@ this project aims to deliver an interesting, engaging, puzzle-focused experience
 
 ## User Stories
 
-**As a first-time player, I want to:**
+**As a player, I want to:**
 * Understand the premise of the game, and the object required to succeed.
 * Be presented with an easily understood user interface.
 * Be able to read instructions on how the game works.
 * Navigate through the various challenges presented with help from dialogue and contextual clues.
 * Have a bug-free experience.
-
-**As a returning player, I want to:**
-* Discover my progress has been saved in local storage.
 * Discover alternative dialogue choices based on using incorrect items with things.
 * Be able to play the demo entirely on any screen size I desire and have the interface adapt appropriately.
 
@@ -133,7 +130,6 @@ Here users are given an understanding of what situation their protagonist is in,
 
 Here users are given a brief introduction to the game's story, and how the protagonist is in the situation they are in.
 
-
 ### Game Page
 
 ![Game Page](assets/docs/game_page_screenshot.png)
@@ -148,7 +144,11 @@ Through the interactive buttons provided at the bottom of the page, users must u
 
 1. As this game uses gif-based images to present a living world, a future update will overhaul this by presenting layered content that users can navigate the character of Ivor through, interacting with things he sees both in and outside the camp.
 
-2. Expanding the story to flesh out Ivar's adventure will provide users with a more fulfilling narrative, allowing them to grow attached to the characters and the world.
+2. Adding further elements to give the game a living, breathing feel, further actions such as scrolling text, background music, fading in between pages, and visual clues of your actions, such as Sigurd's death once defeated.
+
+   The decision to leave music out was made due to time constraint issues, and being unable to have dedicated music created that would suitably fit the aesthetic required.
+
+3. Expanding the story to flesh out Ivar's adventure will provide users with a more fulfilling narrative, allowing them to grow attached to the characters and the world.
 
 ---
 
@@ -201,28 +201,121 @@ Through the interactive buttons provided at the bottom of the page, users must u
 
 8. [JS Hint](https://jshint.com/)
 
-   JS Hint was used to validate the JavaScript code used in the project.
+   The JS Hint Validation Tool was used to validate the JavaScript code used in the project.
 
 9. [W3C Markup Validation](https://validator.w3.org/#validate_by_input) 
-   
-   The W3C Markup Validation was used to ensure HTML met the necessary standards.
 
-10. [JQuery](https://code.jquery.com/)
+   The W3C Markup Validation Tool was used to ensure HTML met the necessary standards.
 
-   The JQuery library was used.
+10. [Jigsaw Validation](https://jigsaw.w3.org/css-validator/validator) 
 
-11. [JSON](https://www.json.org/json-en.html)
+    The Jigsaw Validation Tool was used to validate CSS code used in the project.
 
-   JSON was used to store all of the game data.
+11. [JQuery](https://code.jquery.com/)
+
+    The JQuery library was used.
+
+12. [Google Developers tools](https://developers.google.com/web/tools)
+
+    Google developer tools, such as Chrome DevTools and Lighthouse were used to debug and analyse scripts.
 
 ---
 
 # Testing
 
+Development of this project required a lot of hard work and research, and pushed skillsets to their limits. For a first attempt with JavaScript, this was no small feat.
+
 The game was tested with friends to check for bugs and to obtain general feedback. This was performed when the project was close to completion. 
 These bugs, and others encountered during development, are outlined below:
 
+---
+
 ## Bug fixes
+
+### States, conditions and loops
+
+Throughout development, the biggest and most time-consuming issue surrounded the setting of states as the user progressed. In order to complete the game, the user needed to:
+
+- Use **Paint** with **Shield** to create **Painted Shield**
+- Give **Bjorn** the **Painted Shield** to achieve the condition **BjornPleased**
+- Beat **Astrid** in a game of riddles to achieve the condition **AstridPleased**
+- Give **Sigurd** the **Snacks** to beat him and to achieve the condition **SigurdPleased**
+
+However, getting the JavaScript to acknowledge this too considerable time and effort. The first attempt was using **setState** which caused an error where the buttons stopped showing the correct text (as mentioned above) and this was fixed by setting the states when the startGame function runs initially.
+However the problem persisted with the states not changing as necessary actions were performed.
+
+```
+    function showTextNode(textNodeIndex) {
+        const textNode = textNodes.find(textNode => textNode.id === textNodeIndex);
+        textElement.innerText = textNode.text;
+        dialogueTextElement.innerText = textNode.dialogue;
+        while (optionButtonsElement.firstChild) {
+        optionButtonsElement.removeChild(optionButtonsElement.firstChild);
+    }
+  ```
+Following a conversation with one of the Code Institute tutors and mentors, it was established that the main data of the choice buttons should be moved to a separate JSON file, 
+and that conditions should be implemented to dictate the change in status. However this stopped the ability to build functions into the code, such as when the **Shield** becomes the
+**Painted Shield** so it was returned to the js file to allow for the conditions to be implemented easily.
+
+The next issue arose with setting the loop that would select the textNode IDs that required **Shield** becoming **Painted Shield** to change "text" and "nextText". 
+In the way outlined below, the browser would inexplicably crash until the code was deleted.
+
+```
+shield = ["Shield","Painted Shield"][state.hasPaintedShield]
+shieldNext = [88, 111][state.hasPaintedShield]
+console.log(shield, state.hasPaintedShield)
+function paintShieldToggle(i) {
+    for (let i = 0; i < 301; i++) {
+        paintShield = [12, 29, 51, 62, 74, 82, 87, 96, 100]
+        if (paintShield.includes(i)) {
+            return i;
+        } else {
+            continue;
+        }
+    }
+}
+const shieldNode = textNodes.find(textNode => textNode.id === paintShieldToggle);  
+shieldNode.options[0]["text"] = shield
+shieldNode.options[0]["nextText"] = shieldNext
+```
+After many, many hours of tweaking, the solution came in merging the necessary code in with the **selectOption** function, which was able to hold the necessary if statements and offer
+the required **nextText** once the **hasPaintedShield** condition was met.
+
+```
+function selectOption(textNodeIndex, option) {
+    let nextTextNodeId = option.nextText;
+    if (Array.isArray(nextTextNodeId)) {
+        nextTextNodeId = option.nextText[state.hasPaintedShield]
+    }
+    if (nextTextNodeId <= 0) {
+        return startGame();
+    } 
+    state = Object.assign(state, option.setState);
+    showTextNode(nextTextNodeId);
+}
+```
+
+The final thing that needed fixing was the setting of the gameComplete state. After many reversions that didn't work, the final solution was reached.
+
+```
+function gameComplete() {
+    console.log ("gameComplete");
+    state = {
+        BjornPleased: 0, 
+        SigurdPleased: 0, 
+        AstridPleased: 0,
+        hasPaintedShield: 0,
+    };
+    show = showTextNode(300);
+}
+
+   if (state.BjornPleased == 1 && state.AstridPleased == 1 && state.SigurdPleased == 1) {
+    gameComplete()
+    return;
+}
+```
+
+The inclusion of the return input was required to stop the console going into an infinite loop.
 
 ### In-Game Modals
 
@@ -272,25 +365,6 @@ After many attempted fixes, it turns out it wasn't a problem caused by the modal
 After much research, it was discovered to be an issue relating to the Syntax Error: invalid shorthand property initializer, 
 so the states were changed from **BjornPleased = true**, to **BjornPleased: true**, etc.
 
-### Setting States
-
-Throughout development, there was an ongoing issue with setting states that would be remembered after being met, such as the combination of the Paint and Shield to create the Painted Shield.
-At first, using setState caused an error where the buttons stopped showing the correct text (as mentioned above) and this was fixed by setting the states when the startGame function runs initially.
-However the problem persisted with the states not changing as necessary actions were performed.
-
-```
-    function showTextNode(textNodeIndex) {
-        const textNode = textNodes.find(textNode => textNode.id === textNodeIndex);
-        textElement.innerText = textNode.text;
-        dialogueTextElement.innerText = textNode.dialogue;
-        while (optionButtonsElement.firstChild) {
-        optionButtonsElement.removeChild(optionButtonsElement.firstChild);
-    }
-  ```
-Following a conversation with one of the Code Institute tutors and mentors, it was established that the main data of the choice buttons should be moved to a separate JSON file, 
-and that conditions should be implemented to dictate the change in status.
-
-
 ### Game.html Code Error
 
 During coding, a row div was rendered unnecessary, and blocked out while further testing was required. However, once the decision to delete it was made, it began to throw up an issue wherein the dialogue and 
@@ -310,15 +384,19 @@ This appeared to revert the structure, so that once the new code was then delete
 
 ### Reused Choice IDs
 
-During testing, it was discovered that some of the late stage choices either reused IDs or were linked to the incorrect nextText IDs. To counter, each choice was reviewed and fixed if an error existed.
+During testing, it was discovered that some of the late stage choices either reused IDs or were linked to the incorrect nextText IDs, especially as some additional choices and outcomes were added to the tree.
+ To counter, each choice was reviewed and fixed if an error existed.
 
+---
 
 ## Performance
 
 In order to bring the project up to the highest standards, the Chrome Lighthouse function was used. 
 
 ![Lighthouse](assets/docs/lighthouse-screenshot.png)
+
 ![Performance](assets/docs/performance-screenshot.png)
+
 ![Performance opportunities](assets/docs/performance-screenshot-detail.png)
 
 As expected, performance was a key issue for the project due to its use of animated gifs, and lengthy JavaScript functions. 
@@ -327,6 +405,8 @@ In order to improve this aspect, the gifs were optimised using **EZGif** as the 
 But the biggest improvement came when the **script** tags in the **head** element were moved down to the bottom, which pushed the site performance from mid 70s up into the 90s.
 
 ![Performance fixed](assets/docs/performance-screenshot-improved.png)
+
+---
 
 ## Validator Test
 
@@ -376,11 +456,25 @@ The [W3C Markup Validation](https://validator.w3.org/#validate_by_input) was use
 
    To fix: Removed the **aria-labelledby** attribute from the help modal.
 
+
+## Jigsaw CSS Validator
+
+[Jigsaw](https://jigsaw.w3.org/css-validator/validator) was used to validate CSS code used in the project.
+
+* Validator returned with: **82 .intro-text	Value Error : margin , is an incorrect operator : 20px,20px,20px,20px** 
+
+   To fix: Removed the additional 20px values so it showed **margin: 20px;**
+
+
 ## JS Hint Validator
 
 [JS Hint](https://jshint.com/) was used to validate JavaScript code used in the project.
 
 ### Game.js
+
+* All issues derived came from missing semi colons in the project, and the use of a **show** function for lines 23 and 36 before **showTextNode()**. Once removed, the game continues to work as intended.
+
+---
 
 ## Meeting the Game needs
 
@@ -394,7 +488,7 @@ As outlined in the Project and User Goals, there were 9 main things that were re
 
 Use of a recognisable artistic style, and building out a rich selection of user choices has achieved the required experience that will appease fans of old point and click adventure games.
 
-### First-time Users
+### User Goals
 
 1. To be able to understand the premise of the game, and the object required to succeed.
 
@@ -406,19 +500,27 @@ Use of a recognisable artistic style, and building out a rich selection of user 
 
 5. To have a bug-free experience.
 
+6. To discover alternative dialogue choices based on using incorrect items with things.
+
+7. To be able to play the demo entirely on any screen size and have the interface adapt appropriately.
+
 Through the implementation of a help page, and an introduction page, users are given ample understanding of the game's story, what is required of them to win, and how to navigate through the game to do so.
 Contextual clues have been left in the game's artwork to encourage players to discover the answers they require, as well as through conversation with the game's roster of characters.
 
-### Returning Users
-
-1. To discover my progress has been saved in local storage.
-
-2. To discover alternative dialogue choices based on using incorrect items with things.
-
-3. To be able to play the demo entirely on any screen size and have the interface adapt appropriately.
-
 Thanks to the comprehensive options tree, users have a plethora of different dialogue and narrative responses to their many actions, providing a more expansive and replayable experience.
 Measures have been put in place to ensure that not only does the game run on any screen size, but that it does so in a functional and visually appeasing manner.
+
+Conisderble work has been made to tidy up any bugs or dead ends that a user might reach.
+
+---
+
+## Responsive Design
+
+In order to meet the Project needs, the project needed to be able to be viewed on any device size and still function. This was done using Chrome DevTools to emulate different screen sizes.
+
+As you can see from the image below, the game adapts to fit the viewscreen without overlay or unnecessary scroll. Each of the Chrome DevTools emulated devices was tested, and each was fixed to meet these standards.
+
+![Screen sizes screenshot](assets/docs/screensize-example.png)
 
 ---
 
@@ -483,3 +585,5 @@ This project was created using **Gitpod** and pushed to **GitHub**. To deploy th
 * Thanks to [Ron Gilbert](https://grumpygamer.com/) for creating the Monkey Island series, which inspired this project in the first place.
 
 * Thanks to the amazing tutors at [Code Institute](https://codeinstitute.net/) who offered support and advice through the project's more frustrating sections.
+
+* And finally, a huge thanks to mentor [Anthony Ngene](https://github.com/tonymontaro) for all his advice and guidance throughout the project. Without his help, this project would have never seen completion.

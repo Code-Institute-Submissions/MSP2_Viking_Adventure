@@ -6,6 +6,8 @@ const dialogueTextElement = document.getElementById('dialogue');
 
 let state = {};
 
+let paintShield = [12, 29, 51, 62, 74, 82, 87, 96, 100];
+
 var BjornPleased;
 var AstridPleased;
 var SigurdPleased;
@@ -28,12 +30,23 @@ function  startGame() {
 // Once all members of the High Council are pleased, the game should move onto ID 300 and the win state
 
 function gameComplete() {
+    console.log ("gameComplete");
+    state = {
+        BjornPleased: 0, 
+        SigurdPleased: 0, 
+        AstridPleased: 0,
+        hasPaintedShield: 0,
+    };
     show = showTextNode(300);
 }
 
 // Uses the ID tree below to bring the correct node ID
 
 function showTextNode(textNodeIndex) {
+        if (state.BjornPleased == 1 && state.AstridPleased == 1 && state.SigurdPleased == 1) {
+        gameComplete()
+        return;
+}
     const textNode = textNodes.find(textNode => textNode.id === textNodeIndex);
     textElement.innerText = textNode.text;
     dialogueTextElement.innerText = textNode.dialogue;
@@ -46,23 +59,14 @@ function showTextNode(textNodeIndex) {
 // sets painted shield once painted
 
 shield = ["Shield","Painted Shield"][state.hasPaintedShield]
-shieldNext = [88, 111][state.hasPaintedShield]
 console.log(shield, state.hasPaintedShield)
 
-function paintShieldToggle() {
-    for (let i = 0; i < 301; i++) {
-        paintShield = [12, 29, 51, 62, 74, 82, 87, 96, 100]
-        if (paintShield.includes(i)) {
-            return i;
-        } else {
-            continue;
-        }
-    }
-}
-const shieldNode = textNodes.find(textNode => textNode.id === paintShieldToggle);  
 
-shieldNode.options[0]["text"] = shield
-shieldNode.options[0]["nextText"] = shieldNext
+if (paintShield.includes(textNodeIndex)) {
+    textNode.options[0]["text"] = shield
+}
+
+
 
 
 // Sets the state once user performs certain actions
@@ -73,9 +77,7 @@ console.log(textNode.condition)
 }
 console.log(state)
 
-    if (state[BjornPleased == 1 && AstridPleased == 1 && SigurdPleased == 1]) {
-        gameComplete()
-}
+
 
   // Returns the correct text response to the buttons
 
@@ -84,7 +86,7 @@ console.log(state)
         const button = document.createElement('button');
         button.innerText = option.text;          
         button.classList.add('btn');
-        button.addEventListener('click', () => selectOption(option));
+        button.addEventListener('click', () => selectOption(textNodeIndex, option));
         optionButtonsElement.appendChild(button);
     }
   });
@@ -96,8 +98,11 @@ function showOption(option) {
 
 // starts the game if the textNodeID is equal to or less than 0, and ends the game once the three states are met
 
-function selectOption(option) {
-    const nextTextNodeId = option.nextText;
+function selectOption(textNodeIndex, option) {
+    let nextTextNodeId = option.nextText;
+    if (Array.isArray(nextTextNodeId)) {
+        nextTextNodeId = option.nextText[state.hasPaintedShield]
+    }
     if (nextTextNodeId <= 0) {
         return startGame();
     } 
@@ -327,8 +332,8 @@ let textNodes =
     "text":"Use",
     "dialogue":"",
     "options":[
-      {"text":"Paint","nextText":13},
-      {"text":"Shield","nextText":14},
+      {"text":"Shield","nextText":[14,107]},
+      {"text":"Paint","nextText":13}, 
       {"text":"Snacks","nextText":15},
       {"text":"Back","nextText":1}
     ]
@@ -360,7 +365,7 @@ let textNodes =
     "text":"Use Sword with",
     "dialogue":"",
     "options":[
-      {"text":"Shield","nextText":75},
+      {"text":"Shield","nextText":[75, 75]},
       {"text":"Snacks","nextText":76},
       {"text":"Self","nextText":77},
       {"text":"Back","nextText":1}
@@ -393,7 +398,7 @@ let textNodes =
     "text":"Use Axe with",
     "dialogue":"",
     "options":[
-      {"text":"Shield","nextText":75},
+      {"text":"Shield","nextText":[75, 75]},
       {"text":"Snacks","nextText":76},
       {"text":"Self","nextText":77},
       {"text":"Back","nextText":1}
@@ -482,7 +487,7 @@ let textNodes =
     "text":"Use Gold with",
     "dialogue":"",
     "options":[
-      {"text":"Shield","nextText":72},
+      {"text":"Shield","nextText":[72, 72]},
       {"text":"Snacks","nextText":72},
       {"text":"Self","nextText":83},
       {"text":"Back","nextText":1}
@@ -539,7 +544,7 @@ let textNodes =
     "text":"Use Paint with",
     "dialogue":"",
     "options":[
-      {"text":"shield","nextText":88},
+      {"text":"Shield","nextText":[88, 111]},
       {"text":"Snacks","nextText":75},
       {"text":"Self","nextText":83},
       {"text":"Back","nextText":1}
@@ -630,8 +635,8 @@ let textNodes =
     "text":"Use Snacks with",
     "dialogue":"",
     "options":[
+      {"text":"Shield","nextText":[75, 75]},
       {"text":"Paint","nextText":75},
-      {"text":"Shield","nextText":75},
       {"text":"Self","nextText":83},
       {"text":"Back","nextText":1}
     ]
@@ -721,9 +726,8 @@ let textNodes =
     "text":"Give Bjorn:",
     "dialogue":"Bjorn: What is it, boy?",
     "options":[
+      {"text":"Shield","nextText":[117, 33]},
       {"text":"Paint","nextText":117},
-      {"text":"Shield","nextText":117},
-      {"text":"Painted Shield","nextText":33},
       {"text":"Snacks","nextText":117},
       {"text":"Back","nextText":1}
     ]
@@ -857,8 +861,8 @@ let textNodes =
     "text":"Select Your Weapon of Choice",
     "dialogue":"Sigurd: You dare to face me, do you?",
     "options":[
+      {"text":"Shield","nextText":[116,116]},
       {"text":"Paints","nextText":116},
-      {"text":"Shield","nextText":116},
       {"text":"Snacks","nextText":94},
       {"text":"Back","nextText":4}
     ]
@@ -919,9 +923,8 @@ let textNodes =
     "text":"Look at",
     "dialogue":"",
     "options":[
+      {"text":"Shield","nextText":[64,66]},
       {"text":"Paint","nextText":63},
-      {"text":"Shield","nextText":64},
-      {"text":"Painted Shield","nextText":66},
       {"text":"Snacks","nextText":65},
       {"text":"Back","nextText":5}
     ]
